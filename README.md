@@ -108,24 +108,8 @@ GEMINI_API_KEY=your_gemini_key
 
 ---
 
-## License
-MIT
-```
 
----
 
-Key things to fill in before publishing:
-1. Your **actual MongoDB Atlas URI** — keep that in `.env`, never commit it
-2. Add a `.gitignore` if you haven't — make sure `node_modules/`, `.env`, and `ml-service/__pycache__/` are excluded
-3. Optionally add screenshots of the dashboard under a `## Screenshots` section
 
-Want me to create the `README.md` file directly in the repo?---
-
-Key things to fill in before publishing:
-1. Your **actual MongoDB Atlas URI** — keep that in `.env`, never commit it
-2. Add a `.gitignore` if you haven't — make sure `node_modules/`, `.env`, and `ml-service/__pycache__/` are excluded
-3. Optionally add screenshots of the dashboard under a `## Screenshots` section
-
-Want me to create the `README.md` file directly in the repo?
 
 
