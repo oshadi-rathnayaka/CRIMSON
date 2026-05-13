@@ -1,0 +1,233 @@
+/* ===========================
+   CSS Variables & Reset
+=========================== */
+:root {
+  --crimson: #c0392b;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --border: #e2e5ea;
+  --text-primary: #1a1d23;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.07);
+  --radius: 10px;
+  --font-ui: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --max-w: 700px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================
+   Navbar
+=========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: calc(14px * var(--citizen-text-scale, 1));
+  color: var(--crimson);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.brand-icon {
+  font-size: calc(17px * var(--citizen-text-scale, 1));
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-size: calc(14px * var(--citizen-text-scale, 1));
+  font-weight: 500;
+  color: #6b7280;
+  transition: color 0.18s;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.navbar-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  display: block;
+}
+
+/* ===========================
+   Page Layout
+=========================== */
+.privacy-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ===========================
+   Main
+=========================== */
+.privacy-main {
+  flex: 1;
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 52px 24px 64px;
+}
+
+.privacy-title {
+  font-size: calc(26px * var(--citizen-text-scale, 1));
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+/* ===========================
+   Card
+=========================== */
+.privacy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 40px 44px 44px;
+}
+
+/* ===========================
+   Policy Sections
+=========================== */
+.policy-section {
+  margin-bottom: 28px;
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.policy-heading {
+  font-size: calc(13.5px * var(--citizen-text-scale, 1));
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+}
+
+.policy-para {
+  font-size: calc(12.5px * var(--citizen-text-scale, 1));
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+
+.policy-para:last-child {
+  margin-bottom: 0;
+}
+
+/* Indent bullet-like paras (2nd+ within a section that has multiple) */
+.policy-section .policy-para:not(:first-child) {
+  padding-left: 12px;
+  border-left: 2px solid var(--border);
+}
+
+/* ===========================
+   Footer
+=========================== */
+.footer {
+  background: #ebebed;
+  border-top: 1px solid var(--border);
+  padding: 28px 32px 20px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  color: #6b7280;
+  font-weight: 500;
+  transition: color 0.16s;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-links a.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: calc(18px * var(--citizen-text-scale, 1));
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.footer-copy {
+  font-size: calc(12px * var(--citizen-text-scale, 1));
+  color: var(--text-muted);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 600px) {
+  .navbar { padding: 0 16px; }
+  .navbar-links { gap: 16px; }
+
+  .privacy-main { padding: 32px 16px 48px; }
+
+  .privacy-card { padding: 24px 20px 28px; }
+
+  .footer-links { gap: 18px; }
+}

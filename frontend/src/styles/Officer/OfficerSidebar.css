@@ -1,0 +1,268 @@
+/* ─── Officer Sidebar ─────────────────────────────────────── */
+:root {
+  --officer-sidebar-w: 200px;
+  --officer-topbar-h: 64px;
+  --officer-crimson: #dc2626;
+  --officer-crimson-light: #fef2f2;
+}
+
+.officer-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--officer-topbar-h);
+  background: rgba(248, 250, 252, 0.96);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  z-index: 350;
+}
+
+.officer-topbar-brand {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.officer-topbar-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.officer-topbar-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.officer-topbar-home {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.officer-topbar-home:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.officer-sidebar {
+  position: fixed;
+  top: var(--officer-topbar-h);
+  left: 0;
+  bottom: 0;
+  width: var(--officer-sidebar-w);
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  z-index: 300;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Profile block ─────────────────────────────────────── */
+.officer-sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  flex-shrink: 0;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.officer-sidebar-profile:hover {
+  background: #f9fafb;
+}
+
+.officer-sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--officer-crimson);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.officer-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 2px;
+}
+
+.officer-sidebar-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.officer-sidebar-role {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--officer-crimson);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ── Nav list ──────────────────────────────────────────── */
+.officer-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+}
+
+/* ── Nav item ───────────────────────────────────────────── */
+.officer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.officer-nav-item:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.officer-nav-active {
+  background: var(--officer-crimson-light);
+  color: var(--officer-crimson);
+  font-weight: 600;
+}
+
+.officer-nav-active:hover {
+  background: var(--officer-crimson-light);
+  color: var(--officer-crimson);
+}
+
+.officer-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.officer-nav-icon svg { width: 16px; height: 16px; }
+
+.officer-nav-label { flex: 1; }
+
+.officer-nav-chevron {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.officer-nav-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding-left: 12px;
+  border-left: 2px solid #f0f0f0;
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+
+.officer-nav-subitem {
+  font-size: 12.5px;
+  padding: 7px 10px;
+}
+
+/* ── Footer (logout) ───────────────────────────────────── */
+.officer-sidebar-footer {
+  padding: 8px;
+  border-top: 1px solid #f3f4f6;
+  flex-shrink: 0;
+}
+
+/* ── Page wrapper ──────────────────────────────────────── */
+.officer-with-sidebar {
+  margin-left: var(--officer-sidebar-w);
+  margin-top: var(--officer-topbar-h);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ── Dashboard / CasesManagement legacy header removal ── */
+.officer-with-sidebar .dash-header {
+  display: none !important;
+}
+
+.officer-with-sidebar .dash-body {
+  padding-top: 0 !important;
+}
+
+/* Remove double margin from dash-main / cases-main
+   (parent now provides the 200px offset) */
+.officer-with-sidebar .dash-main {
+  margin-left: 0 !important;
+}
+
+.officer-with-sidebar .cases-main {
+  margin-left: 0 !important;
+}
+
+/* ── Records / Prediction: sidebar already 200px wide ── */
+/* Remove old left margin since parent now provides offset */
+.officer-with-sidebar .rc-main {
+  margin-left: 0 !important;
+  max-width: 100% !important;
+}
+
+.officer-with-sidebar .pd-main {
+  margin-left: 0 !important;
+  max-width: 100% !important;
+}

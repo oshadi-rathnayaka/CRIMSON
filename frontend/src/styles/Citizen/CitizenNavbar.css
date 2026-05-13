@@ -1,0 +1,114 @@
+/* CitizenNavbar — shared nav for all citizen pages */
+.cn-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 16px;
+  height: 72px;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cn-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.cn-nav-logo-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  display: block;
+}
+
+.cn-nav-logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: calc(20px * var(--citizen-text-scale, 1));
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.cn-nav-links {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.cn-nav-links li {
+  font-size: calc(15px * var(--citizen-text-scale, 1));
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.cn-nav-links li:hover {
+  color: #111111;
+}
+
+.cn-nav-links li.active {
+  font-weight: 700;
+  color: #111111;
+  border-bottom: 2px solid #E8192C;
+  padding-bottom: 2px;
+}
+
+.cn-nav-avatar {
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+
+.cn-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E8192C;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: calc(14px * var(--citizen-text-scale, 1));
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cn-avatar-circle:hover {
+  background: #B8102B;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .cn-nav {
+    height: 64px;
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .cn-nav-logo-text {
+    font-size: calc(18px * var(--citizen-text-scale, 1));
+  }
+
+  .cn-nav-links {
+    gap: 28px;
+  }
+
+  .cn-nav-links li {
+    font-size: calc(13px * var(--citizen-text-scale, 1));
+  }
+}

@@ -1,0 +1,180 @@
+/* ────────────────────────────────────────────
+   CitizenFooter.css
+   Shared footer for all citizen pages
+──────────────────────────────────────────── */
+
+/* ── Expanded Footer ── */
+.cf-footer-expanded {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 40px;
+  padding: 40px 60px;
+}
+
+.cf-footer-expanded__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  max-width: 900px;
+}
+
+.cf-footer-col--brand {
+  max-width: 320px;
+}
+
+.cf-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cf-footer-logo {
+  width: 28px;
+  height: 28px;
+  background: #fee2e2;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cf-footer-brand-name {
+  font-size: calc(16px * var(--citizen-text-scale, 1));
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #111827;
+}
+
+.cf-footer-brand-desc {
+  font-size: 0.78rem;
+  color: #6b7280;
+  line-height: 1.65;
+}
+
+.cf-footer-col__heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.cf-footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.cf-footer-list li {
+  font-size: 0.8rem;
+  color: #6b7280;
+  display: flex;
+  gap: 6px;
+}
+
+.cf-footer-list li strong {
+  color: #111827;
+  font-weight: 700;
+}
+
+.cf-footer-list--links li {
+  display: block;
+}
+
+.cf-footer-list--links a {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.cf-footer-list--links a:hover {
+  color: #111827;
+}
+
+/* ── Bottom Footer Bar ── */
+.cf-footer-bar {
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+  padding: 18px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cf-footer-bar__links {
+  display: flex;
+  gap: 90px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cf-footer-bar__links a {
+  font-size: 0.82rem;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.cf-footer-bar__links a:hover {
+  color: #111827;
+}
+
+.cf-footer-bar__social {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.cf-footer-bar__social a {
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.cf-footer-bar__social a:hover {
+  color: #111827;
+}
+
+.cf-footer-bar__copy {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .cf-footer-expanded {
+    padding: 32px 24px;
+  }
+
+  .cf-footer-expanded__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .cf-footer-bar {
+    padding: 18px 24px;
+  }
+
+  .cf-footer-bar__links {
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cf-footer-bar__links {
+    gap: 20px;
+  }
+
+  .cf-footer-bar__links a {
+    font-size: 0.75rem;
+  }
+}

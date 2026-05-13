@@ -1,0 +1,135 @@
+.ops-page {
+  min-height: calc(100vh - 64px);
+  background: #f3f4f6;
+  padding: 24px;
+  margin-left: 200px !important;
+  margin-top: 64px !important;
+  box-sizing: border-box;
+}
+
+.ops-main {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.ops-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.ops-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+.ops-note {
+  font-size: 13px;
+  color: #4b5563;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ops-error {
+  font-size: 13px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ops-success {
+  font-size: 13px;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ops-field {
+  display: grid;
+  gap: 6px;
+}
+
+.ops-field span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.ops-field input,
+.ops-field select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #111827;
+}
+
+.ops-field input:disabled,
+.ops-field select:disabled {
+  background: #ffffff;
+  color: #111827;
+  opacity: 1;
+}
+
+.ops-field input[readonly],
+.ops-field select[readonly] {
+  background: #ffffff;
+  color: #111827;
+}
+
+.ops-field input:-webkit-autofill,
+.ops-field input:-webkit-autofill:hover,
+.ops-field input:-webkit-autofill:focus,
+.ops-field select:-webkit-autofill,
+.ops-field select:-webkit-autofill:hover,
+.ops-field select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111827;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+}
+
+.ops-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ops-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.ops-btn:disabled {
+  opacity: 0.6;
+}
+
+.ops-btn-ghost {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
+}
+
+@media (max-width: 900px) {
+  .ops-page {
+    margin-left: 0;
+    padding: 16px;
+  }
+}

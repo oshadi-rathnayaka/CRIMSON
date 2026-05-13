@@ -1,0 +1,266 @@
+/* =========================================
+   CRIMSON — Admin My Profile
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap');
+
+:root {
+  --red:         #e8102a;
+  --blue:        #2563eb;
+  --blue-hover:  #1d4ed8;
+  --blue-soft:   #eff6ff;
+  --green:       #16a34a;
+  --green-soft:  #f0fdf4;
+  --orange:      #f97316;
+  --orange-soft: #fff7ed;
+
+  --bg-page:     #f2f3f6;
+  --bg-card:     #ffffff;
+  --border:      #e2e5ea;
+  --border-lt:   #eef0f4;
+
+  --text-primary:   #0f1117;
+  --text-secondary: #6b7280;
+  --text-muted:     #9ca3af;
+
+  --font:      'Barlow', sans-serif;
+  --font-cond: 'Barlow Condensed', sans-serif;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --shadow:    0 1px 4px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Page Shell ─────────────────────────── */
+.ap-page {
+  font-family: var(--font);
+  background: var(--bg-page);
+  min-height: 100vh;
+  padding: 28px 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text-primary);
+  animation: apFade 0.3s ease both;
+}
+@keyframes apFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ── Header ─────────────────────────────── */
+.ap-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 14px;
+  text-align: left;
+}
+
+.ap-title {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.ap-subtitle {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+/* ── Card Grid ──────────────────────────── */
+.ap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .ap-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card ───────────────────────────────── */
+.ap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ap-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ap-card-title svg {
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+/* ── Avatar Row ─────────────────────────── */
+.ap-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ap-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-cond);
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.ap-avatar-info p {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.ap-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--blue-soft);
+  color: var(--blue);
+  text-transform: capitalize;
+  margin-top: 4px;
+}
+
+/* ── Fields ─────────────────────────────── */
+.ap-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ap-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ap-input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13.5px;
+  font-family: var(--font);
+  color: var(--text-primary);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.ap-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+.ap-input:disabled {
+  background: var(--bg-page);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* ── Actions ────────────────────────────── */
+.ap-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.ap-btn {
+  height: 36px;
+  padding: 0 18px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.ap-btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+.ap-btn-primary:hover:not(:disabled) { background: var(--blue-hover); }
+
+.ap-btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+.ap-btn-ghost:hover:not(:disabled) { background: var(--bg-page); }
+
+.ap-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Banner ─────────────────────────────── */
+.ap-banner {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ap-banner-success {
+  background: var(--green-soft);
+  color: var(--green);
+  border: 1px solid #bbf7d0;
+}
+
+.ap-banner-error {
+  background: #fff0f1;
+  color: var(--red);
+  border: 1px solid #fecdd3;
+}
+
+/* ── Password rules hint ────────────────── */
+.ap-hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── Separator ──────────────────────────── */
+.ap-sep {
+  border: none;
+  border-top: 1px solid var(--border-lt);
+}

@@ -1,0 +1,253 @@
+/* ─── Admin Sidebar ───────────────────────────────────────── */
+:root {
+  --admin-sidebar-w: 200px;
+  --admin-topbar-h: 64px;
+  --admin-crimson: #dc2626;
+  --admin-crimson-light: #fef2f2;
+}
+
+.admin-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--admin-topbar-h);
+  background: rgba(248, 250, 252, 0.96);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  z-index: 350;
+}
+
+.admin-topbar-brand {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-topbar-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.admin-topbar-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.admin-topbar-home {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.admin-topbar-home:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.admin-sidebar {
+  position: fixed;
+  top: var(--admin-topbar-h);
+  left: 0;
+  bottom: 0;
+  width: var(--admin-sidebar-w);
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Profile block ─────────────────────────────────────── */
+.admin-sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--admin-crimson);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.admin-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 2px;
+}
+
+.admin-sidebar-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.admin-sidebar-role {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--admin-crimson);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ── Nav list ──────────────────────────────────────────── */
+.admin-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+}
+
+/* ── Nav item (shared by both nav buttons & logout) ─────── */
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.admin-nav-item:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.admin-nav-active {
+  background: var(--admin-crimson-light);
+  color: var(--admin-crimson);
+  font-weight: 600;
+}
+
+.admin-nav-active:hover {
+  background: var(--admin-crimson-light);
+  color: var(--admin-crimson);
+}
+
+.admin-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.admin-nav-active .admin-nav-icon {
+  opacity: 1;
+}
+
+.admin-nav-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Footer / Logout ───────────────────────────────────── */
+.admin-sidebar-footer {
+  padding: 8px;
+  border-top: 1px solid #f3f4f6;
+  flex-shrink: 0;
+}
+
+.admin-logout-btn {
+  color: #6b7280;
+}
+
+.admin-logout-btn:hover {
+  background: var(--admin-crimson-light);
+  color: var(--admin-crimson);
+}
+
+/* ── Content offset helper ─────────────────────────────── */
+.admin-with-sidebar {
+  margin-left: var(--admin-sidebar-w);
+  margin-top: var(--admin-topbar-h);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Keep page titles aligned left like section subtopics across all admin pages */
+.admin-with-sidebar .adash-title-block,
+.admin-with-sidebar .um-header > div,
+.admin-with-sidebar .permissions-header__meta,
+.admin-with-sidebar .audit-header > div:first-child,
+.admin-with-sidebar .dm-header,
+.admin-with-sidebar .sh-header > div:first-child {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  align-items: flex-start !important;
+}
+
+.admin-with-sidebar .audit-header__actions,
+.admin-with-sidebar .sh-header__actions {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  justify-content: flex-end !important;
+}
+
+.admin-with-sidebar .adash-title,
+.admin-with-sidebar .adash-subtitle,
+.admin-with-sidebar .um-title,
+.admin-with-sidebar .um-subtitle,
+.admin-with-sidebar .permissions-header__title,
+.admin-with-sidebar .permissions-header__subtitle,
+.admin-with-sidebar .audit-header__title,
+.admin-with-sidebar .audit-header__subtitle,
+.admin-with-sidebar .dm-header__title,
+.admin-with-sidebar .dm-header__subtitle,
+.admin-with-sidebar .sh-header__title,
+.admin-with-sidebar .sh-header__sub {
+  text-align: left !important;
+}

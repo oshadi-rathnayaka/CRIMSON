@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" width="520" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="bldg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#1E40AF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="520" height="320" fill="url(#bg)" rx="12"/>
+
+  <!-- Ground strip -->
+  <rect x="0" y="265" width="520" height="55" fill="#BFDBFE" rx="0"/>
+  <rect x="0" y="262" width="520" height="6" fill="#93C5FD"/>
+
+  <!-- Main building -->
+  <rect x="160" y="110" width="200" height="160" fill="url(#bldg)" rx="4"/>
+  <!-- Roof triangle -->
+  <polygon points="145,112 260,58 375,112" fill="url(#roof)"/>
+  <!-- Roof ridge line -->
+  <line x1="145" y1="112" x2="375" y2="112" stroke="#1E3A8A" stroke-width="2"/>
+
+  <!-- Building facade (lighter front) -->
+  <rect x="163" y="113" width="194" height="157" fill="#2563EB" rx="2" opacity="0.5"/>
+
+  <!-- Entrance arch -->
+  <rect x="222" y="195" width="56" height="75" fill="#1E3A8A" rx="3"/>
+  <ellipse cx="250" cy="195" rx="28" ry="14" fill="#1E3A8A"/>
+  <!-- Door knob -->
+  <circle cx="242" cy="235" r="3" fill="#FCD34D"/>
+
+  <!-- Windows row 1 -->
+  <rect x="178" y="130" width="32" height="28" fill="#93C5FD" rx="3" opacity="0.9"/>
+  <rect x="222" y="130" width="32" height="28" fill="#93C5FD" rx="3" opacity="0.9"/>
+  <rect x="266" y="130" width="32" height="28" fill="#93C5FD" rx="3" opacity="0.9"/>
+  <rect x="310" y="130" width="32" height="28" fill="#93C5FD" rx="3" opacity="0.9"/>
+
+  <!-- Window cross dividers row 1 -->
+  <line x1="194" y1="130" x2="194" y2="158" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="178" y1="144" x2="210" y2="144" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="238" y1="130" x2="238" y2="158" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="222" y1="144" x2="254" y2="144" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="282" y1="130" x2="282" y2="158" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="266" y1="144" x2="298" y2="144" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="326" y1="130" x2="326" y2="158" stroke="#1E40AF" stroke-width="1.5"/>
+  <line x1="310" y1="144" x2="342" y2="144" stroke="#1E40AF" stroke-width="1.5"/>
+
+  <!-- Windows row 2 -->
+  <rect x="178" y="170" width="32" height="22" fill="#93C5FD" rx="3" opacity="0.9"/>
+  <rect x="310" y="170" width="32" height="22" fill="#93C5FD" rx="3" opacity="0.9"/>
+
+  <!-- Sign board -->
+  <rect x="190" y="90" width="120" height="18" fill="#FFFFFF" rx="3" opacity="0.95"/>
+  <text x="250" y="103" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#1E40AF" text-anchor="middle" letter-spacing="0.5">SUPPORT CENTER</text>
+
+  <!-- Flag pole -->
+  <rect x="258" y="42" width="3" height="20" fill="#94A3B8"/>
+  <!-- Sri Lanka flag-like banner -->
+  <rect x="261" y="42" width="22" height="13" fill="#DC143C" rx="1"/>
+  <text x="272" y="52" font-family="Arial" font-size="8" fill="#FCD34D" text-anchor="middle">✦</text>
+
+  <!-- Left tree -->
+  <rect x="105" y="210" width="8" height="55" fill="#92400E"/>
+  <circle cx="109" cy="195" r="28" fill="#16A34A"/>
+  <circle cx="95" cy="205" r="18" fill="#15803D"/>
+  <circle cx="123" cy="205" r="18" fill="#166534"/>
+
+  <!-- Right tree -->
+  <rect x="407" y="210" width="8" height="55" fill="#92400E"/>
+  <circle cx="411" cy="195" r="28" fill="#16A34A"/>
+  <circle cx="397" cy="205" r="18" fill="#15803D"/>
+  <circle cx="425" cy="205" r="18" fill="#166534"/>
+
+  <!-- Path / walkway -->
+  <polygon points="230,265 270,265 280,310 220,310" fill="#BFDBFE" opacity="0.6"/>
+  <line x1="250" y1="265" x2="250" y2="310" stroke="#93C5FD" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- People (left) -->
+  <circle cx="130" cy="238" r="10" fill="#FDE68A"/>
+  <rect x="122" y="248" width="16" height="22" fill="#DC2626" rx="3"/>
+  <!-- Arms left person -->
+  <line x1="122" y1="254" x2="112" y2="262" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="138" y1="254" x2="148" y2="258" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- People (right) -->
+  <circle cx="390" cy="238" r="10" fill="#FDE68A"/>
+  <rect x="382" y="248" width="16" height="22" fill="#2563EB" rx="3"/>
+  <!-- Arms right person -->
+  <line x1="382" y1="254" x2="372" y2="258" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="398" y1="254" x2="408" y2="262" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Heart above center -->
+  <path d="M250 35 C250 30, 244 25, 238 30 C232 34, 232 42, 238 48 L250 58 L262 48 C268 42, 268 34, 262 30 C256 25, 250 30, 250 35 Z" fill="#EF4444" opacity="0.85"/>
+
+  <!-- Connecting hands in bottom center -->
+  <path d="M195 280 Q210 272 220 278 Q230 284 240 280" stroke="#2563EB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M305 280 Q290 272 280 278 Q270 284 260 280" stroke="#2563EB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+</svg>

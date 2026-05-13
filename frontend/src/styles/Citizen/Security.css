@@ -1,0 +1,500 @@
+/* =============================================
+   CRIMSON – Security & Privacy Page Styles
+   File: src/frontend/styles/Citizen/Security.css
+   ============================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --crimson-blue: #2563eb;
+  --crimson-blue-hover: #1d4ed8;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --bg-page: #f3f4f6;
+  --bg-white: #ffffff;
+  --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --nav-height: 56px;
+  --radius: 10px;
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-white);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ── Navbar ── */
+.sec-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: rgba(243, 244, 246, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 1000;
+}
+
+.sec-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.sec-nav__logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.sec-nav__name {
+  font-size: calc(17px * var(--citizen-text-scale, 1));
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.sec-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sec-nav__link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.sec-nav__link:hover {
+  color: var(--text-primary);
+}
+
+.sec-nav__avatar {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.sec-nav__avatar-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--crimson-blue);
+  transition: border-color 0.2s;
+}
+
+.sec-nav__avatar-img:hover {
+  border-color: var(--crimson-blue-hover);
+}
+
+/* ── Page Layout ── */
+.sec-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-white);
+}
+
+.sec-main {
+  flex: 1;
+  margin-top: var(--nav-height);
+  padding: 52px 24px 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Page Title ── */
+.sec-page-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+/* ── Card ── */
+.sec-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 8px 0;
+  overflow: hidden;
+}
+
+/* ── Security Rows (Password / 2FA) ── */
+.sec-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+}
+
+.sec-row--border {
+  border-bottom: 1px solid var(--border);
+}
+
+.sec-row__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sec-row__icon--grey {
+  background: #f1f5f9;
+  color: var(--text-secondary);
+}
+
+.sec-row__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sec-row__label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.sec-row__desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* ── Action Buttons ── */
+.sec-btn {
+  flex-shrink: 0;
+  padding: 9px 18px;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.sec-btn--blue {
+  background: var(--crimson-blue);
+  color: #fff;
+}
+
+.sec-btn--blue:hover {
+  background: var(--crimson-blue-hover);
+}
+
+.sec-btn--blue:active {
+  transform: scale(0.97);
+}
+
+/* ── Divider ── */
+.sec-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ── Privacy Toggle Rows ── */
+.sec-toggle-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.sec-toggle-row:first-of-type {
+  border-top: none;
+}
+
+.sec-toggle-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sec-toggle-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.sec-toggle-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Toggle Switch ── */
+.sec-switch {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.22s;
+  margin-top: 2px;
+}
+
+.sec-switch--on {
+  background: var(--crimson-blue);
+}
+
+.sec-switch__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  transition: left 0.22s;
+}
+
+.sec-switch--on .sec-switch__thumb {
+  left: 22px;
+}
+
+/* ── Footer ── */
+.sec-footer {
+  background: var(--bg-page);
+  border-top: 1px solid var(--border);
+  padding: 22px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sec-footer__links {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sec-footer__links a {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.sec-footer__links a:hover {
+  color: var(--text-primary);
+}
+
+.sec-footer__social {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.sec-footer__social a {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.sec-footer__social a:hover {
+  color: var(--text-primary);
+}
+
+.sec-footer__copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .sec-nav {
+    padding: 0 16px;
+  }
+
+  .sec-nav__links {
+    display: none;
+  }
+
+  .sec-main {
+    padding: 36px 16px 48px 16px;
+  }
+
+  .sec-page-title {
+    font-size: 1.35rem;
+  }
+
+  .sec-row {
+    padding: 16px 18px;
+    flex-wrap: wrap;
+  }
+
+  .sec-toggle-row {
+    padding: 16px 18px;
+  }
+
+  .sec-footer__links {
+    gap: 20px;
+  }
+}
+
+/* ── Privacy Save Row ───────────────────────── */
+.sec-privacy-save-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 20px;
+  flex-wrap: wrap;
+}
+
+.sec-privacy-saved {
+  color: #16a34a;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  font-weight: 500;
+}
+
+.sec-privacy-error {
+  color: #dc2626;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  font-weight: 500;
+}
+
+.sec-btn--grey {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.sec-btn--grey:hover {
+  background: #e5e7eb;
+}
+
+/* ── Change Password Modal ─────────────────── */
+.sec-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.sec-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.sec-modal__title {
+  font-size: calc(18px * var(--citizen-text-scale, 1));
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.sec-modal__success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  margin-bottom: 16px;
+}
+
+.sec-modal__error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  margin-bottom: 16px;
+}
+
+.sec-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.sec-modal__field label {
+  font-size: calc(13px * var(--citizen-text-scale, 1));
+  font-weight: 600;
+  color: #374151;
+}
+
+.sec-modal__field input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: calc(14px * var(--citizen-text-scale, 1));
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.sec-modal__field input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.sec-modal__field-error {
+  color: #dc2626;
+  font-size: calc(12px * var(--citizen-text-scale, 1));
+}
+
+.sec-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}

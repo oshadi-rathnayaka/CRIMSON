@@ -1,0 +1,4 @@
+nic,fullName,age,gender,district,primaryCrimeType,riskLevel,legalStatus,convictionCount,pendingCaseCount
+901234567V,Ruwan Bandara,34,Male,Colombo,Robbery,High,On Bail,2,1
+852345678V,Nishani Perera,27,Female,Kandy,Fraud,Medium,Open,1,0
+760987654V,Ajith Kumara,45,Male,Galle,Drug Possession,High,Convicted,3,0
