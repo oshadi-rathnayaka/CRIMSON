@@ -87,10 +87,10 @@ export default function Login() {
     <div className="officer-login-page">
       {/* Navbar */}
       <nav className="officer-login-nav">
-        <div className="officer-login-nav__brand">
+        <Link to="/" className="officer-login-nav__brand" style={{ textDecoration: "none" }}>
           <img src={logoImage} alt="CRIMSON logo" className="officer-login-nav__logo-icon" />
           <span className="officer-login-nav__brand-name">CRIMSON</span>
-        </div>
+        </Link>
         <Link to="/login" className="officer-login-nav__signin-btn">Citizen Login</Link>
       </nav>
 

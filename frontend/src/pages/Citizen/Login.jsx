@@ -65,10 +65,10 @@ function Login() {
     <div className="login-page">
       {/* Navbar — matches Register page */}
       <nav className="login-nav">
-        <div className="login-nav__brand">
+        <Link to="/" className="login-nav__brand" style={{ textDecoration: "none" }}>
           <img src={logoImage} alt="CRIMSON logo" className="login-nav__logo-icon" />
           <span className="login-nav__brand-name">CRIMSON</span>
-        </div>
+        </Link>
         <Link to="/register" className="login-nav__signup-btn">Sign up</Link>
       </nav>
 

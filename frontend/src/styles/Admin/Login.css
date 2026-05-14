@@ -48,7 +48,10 @@ body {
 .admin-login-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
+  padding: calc(72px + 32px) 24px 40px;
 }
 
 /* Navbar */
@@ -116,8 +119,12 @@ body {
 .admin-root {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 72px;
-  min-height: calc(100vh - 72px);
+  width: 100%;
+  max-width: 1080px;
+  min-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.13);
   font-family: var(--font);
 }
 

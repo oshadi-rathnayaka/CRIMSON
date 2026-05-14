@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: "Times New Roman", Times, serif; font-size: 12pt; margin: 2.54cm; line-height: 1.8; color: #000; }
+  h1 { font-size: 18pt; font-weight: bold; text-align: center; margin-top: 30pt; margin-bottom: 12pt; }
+  h2 { font-size: 14pt; font-weight: bold; margin-top: 24pt; margin-bottom: 8pt; border-bottom: 1px solid #000; padding-bottom: 4pt; }
+  h3 { font-size: 12pt; font-weight: bold; margin-top: 18pt; margin-bottom: 6pt; }
+  h4 { font-size: 12pt; font-weight: bold; font-style: italic; margin-top: 14pt; margin-bottom: 4pt; }
+  p { margin: 6pt 0 10pt 0; text-align: justify; }
+  ul, ol { margin: 6pt 0 10pt 1.5cm; }
+  li { margin-bottom: 5pt; }
+  .cover { text-align: center; margin-top: 120pt; margin-bottom: 40pt; }
+  .cover h1 { font-size: 22pt; border: none; }
+  .cover h2 { font-size: 16pt; border: none; font-weight: normal; }
+  .cover p { text-align: center; font-size: 11pt; }
+  .toc { margin: 20pt 0; }
+  .toc p { text-align: left; margin: 3pt 0; }
+  .page-break { page-break-before: always; }
+  table { width: 100%; border-collapse: collapse; margin: 12pt 0; font-size: 11pt; }
+  th { background: #1a1a2e; color: #fff; padding: 8pt; text-align: left; font-weight: bold; }
+  td { padding: 7pt 8pt; border: 1px solid #ccc; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f8f8; }
+  code { font-family: "Courier New", monospace; font-size: 10pt; background: #f4f4f4; padding: 1pt 3pt; border-radius: 2pt; }
+  pre { font-family: "Courier New", monospace; font-size: 9.5pt; background: #f4f4f4; padding: 10pt; border-left: 3px solid #8d153a; margin: 10pt 0; white-space: pre-wrap; line-height: 1.5; }
+  .info-box { background: #fff8f0; border-left: 4px solid #f6921e; padding: 10pt 14pt; margin: 10pt 0; }
+  .ref { font-size: 10.5pt; line-height: 1.6; text-align: left; margin-bottom: 6pt; }
+  .chapter-title { font-size: 20pt; font-weight: bold; text-align: center; margin: 30pt 0 20pt; }
+  .subtitle { font-size: 11pt; color: #444; font-style: italic; margin-bottom: 8pt; }
+  hr { border: none; border-top: 2px solid #8d153a; margin: 16pt 0; }
+  .figure-caption { font-size: 10pt; font-style: italic; text-align: center; margin-top: 4pt; color: #444; }
+  blockquote { border-left: 3px solid #006a4e; padding-left: 12pt; margin: 10pt 0; font-style: italic; color: #333; }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <p style="font-size:11pt; margin-bottom: 60pt;">PUSL3190 Computing Project — Final Report</p>
+  <h1>"CRIMSON"</h1>
+  <h2 style="font-size:15pt; font-weight:bold; margin-top:10pt;">AI-Powered Crime Reporting and Predictive Policing System<br>with Victim Support Management</h2>
+  <br><br>
+  <p><strong>Supervisor:</strong> Mr. Gayan Perera</p>
+  <p><strong>Name:</strong> Rathnayaka M Rathnayaka</p>
+  <p><strong>Plymouth Index Number:</strong> 10953734</p>
+  <p><strong>Degree Program:</strong> BSc (Hons) Computer Science</p>
+  <p><strong>Submission Date:</strong> May 2026</p>
+  <br><br><br>
+  <p style="font-size:10pt; color:#666;">University of Plymouth — NSBM Green University</p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="page-break"></div>
+<h2 style="text-align:center; border:none; font-size:16pt;">Table of Contents</h2>
+<div class="toc">
+  <p><strong>Chapter 1 – Introduction</strong></p>
+  <p style="margin-left:20pt;">1.1 Background of the Context</p>
+  <p style="margin-left:20pt;">1.2 Problem Identification</p>
+  <p style="margin-left:20pt;">1.3 Problem Statement</p>
+  <p style="margin-left:20pt;">1.4 Research Gap</p>
+  <p style="margin-left:20pt;">1.5 Research Problems</p>
+  <p style="margin-left:20pt;">1.6 Research Questions</p>
+  <p style="margin-left:20pt;">1.7 Research Objectives</p>
+  <br>
+  <p><strong>Chapter 2 – Literature Review</strong></p>
+  <p style="margin-left:20pt;">2.1 Level 01 – Identifying the Tentative Research Problem</p>
+  <p style="margin-left:20pt;">2.2 Level 02 – Finding the Research Gaps</p>
+  <p style="margin-left:20pt;">2.3 Level 03 – Modifying the Research Problem</p>
+  <p style="margin-left:20pt;">2.4 Level 04 – Conceptual Framework and Propositions</p>
+  <p style="margin-left:20pt;">2.5 Level 05 – Measurement Indicators and Research Design</p>
+  <p style="margin-left:20pt;">2.6 Level 06 – Validating the Findings</p>
+  <br>
+  <p><strong>Chapter 3 – Methodology</strong></p>
+  <p style="margin-left:20pt;">3.1 Introduction</p>
+  <p style="margin-left:20pt;">3.2 High-Level Architectural Diagram</p>
+  <p style="margin-left:20pt;">3.3 Dataset and Data Collection</p>
+  <p style="margin-left:20pt;">3.4 Data Pre-Processing</p>
+  <p style="margin-left:20pt;">3.5 Exploratory Data Analysis</p>
+  <p style="margin-left:20pt;">3.6 Model Development</p>
+  <p style="margin-left:20pt;">3.7 Model Validation</p>
+  <p style="margin-left:20pt;">3.8 System Development</p>
+  <br>
+  <p><strong>Chapter 4 – Testing</strong></p>
+  <br>
+  <p><strong>Chapter 5 – Results and Evaluation</strong></p>
+  <br>
+  <p><strong>Chapter 6 – Conclusion</strong></p>
+  <br>
+  <p><strong>References</strong></p>
+</div>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 1 – Introduction</div>
+
+<h2>1.1 Background of the Context</h2>
+<p>
+Sri Lanka, like many developing nations, finds itself at a critical crossroads between traditional governance and the demands of a modern digital society. The country's law enforcement infrastructure, in particular, reflects a system that was built for a different era — one in which paper forms, physical filing cabinets, and face-to-face interactions were the only available tools. Today, despite Sri Lanka's impressive growth in mobile internet usage (with active mobile broadband subscribers exceeding 9.7 million as of 2023, according to the Telecommunications Regulatory Commission of Sri Lanka), the processes underpinning crime reporting and criminal justice remain stubbornly analogue.
+</p>
+<p>
+The disparity is stark. Citizens in urban centres like Colombo or Kandy may have access to fast 4G networks and capable smartphones, yet if they witness a crime or need to file a complaint, they must still travel to the nearest police station, fill in a handwritten First Information Report (FIR), and wait for an officer to process it manually. For citizens in rural districts — Monaragala, Mullaitivu, or Polonnaruwa, for instance — this journey alone may take hours, effectively pricing them out of justice.
+</p>
+<p>
+At the same time, global advances in technology have fundamentally transformed how law enforcement agencies operate in many parts of the world. Predictive policing systems, digital case management platforms, and AI-driven crime analytics are now common in the United Kingdom, the United States, Singapore, and parts of India. These systems allow police to anticipate where crime is likely to occur, to identify repeat offenders proactively, and to allocate patrol resources based on evidence rather than intuition. Sri Lanka currently has no equivalent system at a national or district level.
+</p>
+<p>
+This project — CRIMSON (Crime Reporting and Intelligent Safety Management Online Network) — was conceived as a direct response to that gap. It is an attempt to build a locally appropriate, affordable, and technically robust platform that brings Sri Lanka's crime management infrastructure into the twenty-first century. Critically, it is designed not just for law enforcement, but for ordinary citizens and for the NGOs and welfare organisations that support crime victims — people who have historically been overlooked by technology-focused policing solutions.
+</p>
+<p>
+The timing of this project is also significant. Sri Lanka is undergoing a period of economic recovery and institutional reform following the crises of 2022. Public trust in institutions, including law enforcement, is an area that requires careful attention. A transparent, accessible, and digitally enabled crime management system has the potential to rebuild some of that trust by making the justice system more visible, accountable, and citizen-friendly.
+</p>
+
+<h2>1.2 Problem Identification</h2>
+<p>
+The problems motivating this project were identified through a combination of primary research — including informal interviews with police officers and an NGO victim support worker, an online survey distributed to 38 participants, and direct observation of existing workflows — alongside a review of official government documents and the Sri Lanka Police Department's annual crime statistics reports.
+</p>
+<p>
+The research identified five distinct, interconnected problems:
+</p>
+<ul>
+  <li><strong>Inaccessible crime reporting:</strong> The physical requirement to visit a police station in order to file a report actively discourages citizens from reporting incidents, particularly minor ones. Survey data showed that 64% of respondents had witnessed or experienced an incident they chose not to report because the process felt too complicated or inconvenient. This results in widespread underreporting and gaps in the data that police rely on to understand crime patterns.</li>
+  <li><strong>Fragmented and unsearchable criminal records:</strong> Police departments store records in physical filing cabinets or, at best, in basic station-level spreadsheets. These are not connected across stations or districts. Officers interviewed described cases where tracking a suspect's history across two different divisions required formal written inter-station requests that could take weeks.</li>
+  <li><strong>Absence of victim support coordination:</strong> There is no unified platform connecting police departments with hospitals, NGOs, legal aid organisations, and social welfare departments. Crime victims must navigate these services independently, often in the immediate aftermath of a traumatic event. An NGO representative interviewed for this research described how victims regularly fell out of the support system entirely because there was no mechanism for case workers at different organisations to coordinate.</li>
+  <li><strong>Reactive rather than proactive policing:</strong> Without any data analytics capability, police resource allocation is driven by experience and habit rather than evidence. Officers cannot identify which areas or time periods carry the highest risk, cannot predict near-future trends, and cannot assess the re-offending likelihood of known criminals on their caseload.</li>
+  <li><strong>No inter-district data sharing:</strong> The fragmentation of records across individual stations means there is no real-time mechanism for an officer in Galle to know that a suspect they are investigating has a prior record in Jaffna. This benefits repeat and mobile offenders and impedes collaborative investigations.</li>
+</ul>
+
+<h2>1.3 Problem Statement</h2>
+<p>
+Sri Lanka's criminal justice system currently operates through manual, paper-based processes that fail both the citizens seeking justice and the officers attempting to deliver it. Citizens face significant barriers to reporting crimes due to the requirement to physically visit police stations, which leads to endemic underreporting and delayed investigations. Criminal records are stored in isolated, unsearchable formats at individual police stations, preventing meaningful cross-district analysis or pattern recognition. Victim support services operate in organisational silos with no shared data infrastructure, resulting in many victims receiving incomplete or no support following crimes against them. Law enforcement agencies lack any data-driven analytical capacity, forcing officers to operate reactively rather than proactively. These combined failures produce delayed emergency responses, poor resource allocation, inadequate victim outcomes, and eroded public trust in law enforcement institutions.
+</p>
+<p>
+The CRIMSON system addresses this problem by developing a comprehensive, integrated web-based platform that digitises crime reporting for citizens, centralises criminal records management for officers, coordinates multi-agency victim support, and deploys machine learning models for predictive analytics — all within a system specifically designed for Sri Lanka's multilingual, district-based, and resource-constrained policing environment.
+</p>
+
+<h2>1.4 Research Gap</h2>
+<p>
+A review of the existing academic and applied literature on crime management systems reveals four significant gaps that this project is positioned to address:
+</p>
+<h3>Contextual Gap</h3>
+<p>
+The overwhelming majority of predictive policing research and implemented systems originate from and are designed for high-income, English-speaking countries — primarily the United States, the United Kingdom, and Western Europe (Perry et al., 2021; Lau, 2019). These contexts differ fundamentally from Sri Lanka in terms of infrastructure reliability, budgetary constraints, linguistic diversity (Sinhala, Tamil, English), and the district-based structure of the national police service. Waidyalankara (2021) provides the most relevant Sri Lankan perspective but focuses primarily on ethical and policy implications rather than on practical implementation. No published work addresses the technical design of a crime management system specifically for the Sri Lankan context.
+</p>
+<h3>Technology Integration Gap</h3>
+<p>
+Existing systems typically address only one dimension of crime management: either public reporting, or records management, or predictive analytics, or victim support. Very few systems attempt to integrate all of these functions into a unified platform (Seldadyo et al., 2018). This fragmentation means that information flowing from a citizen's report to an officer's case notes to a victim support coordinator exists in entirely separate systems — or not at all — which limits the effectiveness of each component individually and prevents any holistic management of a case lifecycle.
+</p>
+<h3>Progressive Web Application Gap</h3>
+<p>
+Despite the proven advantages of Progressive Web Applications in resource-constrained environments — offline functionality, cross-platform compatibility, low device requirements, no app store dependency — they remain largely unexplored in public safety contexts. Most implementations use either native mobile apps (which require expensive development for iOS and Android separately) or desktop-first web systems (which perform poorly on low-end smartphones). Given Sri Lanka's device diversity and connectivity variability, PWA technology is a natural fit that has not yet been explored in the literature.
+</p>
+<h3>Multi-Model Predictive Approach Gap</h3>
+<p>
+Du (2023) and Jenga et al. (2023) both note that most predictive policing implementations rely on a single algorithm — typically hotspot mapping or simple temporal regression. Few systems deploy multiple complementary models (temporal forecasting, spatial clustering, individual-level recidivism prediction, and NLP categorisation) within a single platform. A multi-model approach is theoretically superior because different prediction tasks require different algorithmic strengths, and combining outputs provides richer decision support than any single model can offer.
+</p>
+
+<h2>1.5 Research Problems</h2>
+<p>The following research problems were identified from the gap analysis:</p>
+<ul>
+  <li><strong>RP1:</strong> Existing crime management systems do not address the specific operational, linguistic, and infrastructural constraints of Sri Lanka's law enforcement environment.</li>
+  <li><strong>RP2:</strong> The fragmentation of crime reporting, records management, victim support, and predictive analytics into separate siloed systems reduces the effectiveness of each component and prevents holistic case lifecycle management.</li>
+  <li><strong>RP3:</strong> Law enforcement agencies in Sri Lanka lack accessible, computationally affordable tools for data-driven decision-making, including crime forecasting, spatial hotspot analysis, and individual recidivism prediction.</li>
+  <li><strong>RP4:</strong> Citizens face disproportionate barriers to accessing the criminal justice system, particularly in rural and semi-urban areas, due to the absence of digital reporting infrastructure that works across low-end devices and variable connectivity.</li>
+</ul>
+
+<h2>1.6 Research Questions</h2>
+<p>The following research questions guided the design and evaluation of the CRIMSON system:</p>
+<ol>
+  <li>How can a web-based platform be designed and implemented to make crime reporting accessible to Sri Lankan citizens across diverse devices, connectivity conditions, and language backgrounds?</li>
+  <li>To what extent can machine learning models — specifically LSTM time-series forecasting, DBSCAN spatial clustering, Random Forest classification, and NLP categorisation — be applied to Sri Lankan crime data to generate actionable predictive insights for law enforcement?</li>
+  <li>How can a single integrated platform effectively coordinate crime reporting, criminal records management, victim support tracking, and predictive analytics in a way that serves citizens, police officers, and administrators simultaneously?</li>
+  <li>What accuracy levels can be achieved by each machine learning model when trained on Sri Lanka-specific historical crime data, and do these meet the performance thresholds required for operational usefulness?</li>
+</ol>
+
+<h2>1.7 Research Objectives</h2>
+<p>The following objectives were defined to guide the development and evaluation of the project:</p>
+<ol>
+  <li><strong>RO1:</strong> To design and develop a responsive, multi-language Web Application that enables citizens to file crime reports, trigger emergency SOS alerts, and track case progress from any device or browser without requiring installation.</li>
+  <li><strong>RO2:</strong> To build a centralised, searchable digital database for criminal records and offender profiles that supports cross-district querying, evidence attachment, and case linking.</li>
+  <li><strong>RO3:</strong> To implement a victim support coordination module that connects police departments, hospitals, NGOs, and welfare services around a shared case record, enabling priority-based tracking and multi-agency collaboration.</li>
+  <li><strong>RO4:</strong> To develop, train, and integrate five machine learning models — LSTM crime rate forecasting, DBSCAN hotspot clustering, Random Forest recidivism prediction, victimisation pattern analysis, and NLP crime categorisation — achieving performance benchmarks of ≥75% accuracy where applicable.</li>
+  <li><strong>RO5:</strong> To deliver an analytics dashboard providing real-time visualisation of crime statistics, predictive maps, and KPI monitoring for police administrators and officers.</li>
+  <li><strong>RO6:</strong> To implement secure role-based access control across three user roles (Citizen, Police Officer, Administrator), supported by JWT authentication, bcrypt password hashing, and comprehensive audit logging.</li>
+</ol>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 2 – Literature Review</div>
+
+<p style="font-style:italic;">
+This literature review is structured across six progressive levels, following an evidence-based approach that moves from initial problem identification through gap analysis and conceptual framework development, to the justification of research design and validation strategy.
+</p>
+
+<h2>2.1 Level 01 – Identifying the Tentative Research Problem</h2>
+<p>
+The starting point for this literature review was understanding the global state of crime management technology in order to establish whether a meaningful problem existed for Sri Lanka. Perry et al. (2021) provide a foundational overview of predictive policing in the United States, documenting how departments like the Los Angeles Police Department (LAPD) and the New Orleans Police Department have used crime forecasting tools to reduce patrol response times and concentrate resources on high-risk areas. Their work is persuasive in establishing that data-driven policing is not merely an academic concept — it has been tested, refined, and operationalised in real police departments over more than a decade.
+</p>
+<p>
+However, reading Perry et al. (2021) alongside Waidyalankara (2021) reveals an immediate and important tension. Where Perry et al. describe the operational benefits of predictive policing, Waidyalankara's analysis of Sri Lanka's specific context highlights that not a single equivalent system has been implemented in Sri Lanka at any scale. The Sri Lanka Police Department's own publications confirm this: the publicly accessible portal allows general inquiries but contains no facility for digital crime reporting, case tracking, or analytics access. The tentative research problem that emerged from this initial reading was therefore: <em>why does Sri Lanka lack the crime management technology that comparable nations have implemented, and what would it take to build an appropriate system from scratch?</em>
+</p>
+<p>
+Lau (2019) helped frame the broader picture by explaining the conceptual evolution of predictive policing — from simple geographic profiling in the 1990s to modern machine learning approaches. This context was useful for understanding not just what was possible technically, but what the risks and assumptions of different approaches were. The tentative problem was thus refined: not just building any crime management system, but building one that was technically appropriate, locally contextualised, and ethically sound.
+</p>
+
+<h2>2.2 Level 02 – Finding the Research Gaps</h2>
+<p>
+Having established the existence of a problem, the second phase of the review focused specifically on identifying what had <em>not</em> been done — the gaps that would define the unique contribution of this project.
+</p>
+<p>
+Jenga et al. (2023) conducted a comprehensive review of machine learning applications in crime prediction across more than 80 published studies. Their meta-analysis found that ensemble methods (particularly Random Forests) and deep learning approaches (particularly LSTMs) consistently outperformed traditional regression and rule-based systems, but also identified a critical limitation: the vast majority of studies use datasets from North America or Western Europe. The authors explicitly note that "the generalisability of predictive models to different legal, cultural, and geographic contexts remains an open research question" (Jenga et al., 2023, p. 14). This confirmed Gap 1: no work had been done on applying these algorithms to Sri Lankan crime data.
+</p>
+<p>
+Du (2023), reviewing 147 papers on multi-scale spatio-temporal crime prediction, found that while individual methods like DBSCAN for hotspot detection and LSTM for temporal forecasting had been studied extensively in isolation, very few papers examined the combined use of multiple complementary models within a single operational system. The paper noted that "the integration of temporal, spatial, and individual-level predictive approaches remains an underexplored area" (Du, 2023, p. 11). This confirmed Gap 2: the multi-model integration approach adopted in CRIMSON represents a genuine contribution to the literature.
+</p>
+<p>
+Seldadyo et al. (2018) examined the current state of predictive policing adoption in emerging economies and found that existing commercial solutions (PredPol, ShotSpotter, COMPSTAT) were economically inaccessible for police departments in countries with constrained public sector budgets. The authors argued that affordable, open-source alternatives were needed but largely absent from the literature. This confirmed Gap 3: the affordability and accessibility of crime management technology for resource-constrained environments was not addressed by existing systems.
+</p>
+<p>
+The PWA-specific gap was identified through Chainey and Ratcliffe (2021), whose chapter on mobile crime mapping noted that virtually all reviewed implementations used either native apps or standard web applications, with no discussion of Progressive Web Applications. Given the cross-platform, offline-capable, and installation-free nature of PWA technology, this was a surprising omission — and confirmed Gap 4.
+</p>
+<p>
+Finally, victim support coordination appeared nowhere in the predictive policing or crime management system literature reviewed. Kitchin (2023) touches on the ethics of data-driven public services more broadly but does not address victim support specifically. The absence of this dimension from both the academic literature and from existing systems confirmed Gap 5: the victim support coordination module represents a genuinely novel contribution to integrated crime management systems.
+</p>
+
+<h2>2.3 Level 03 – Modifying the Research Problem</h2>
+<p>
+Based on the gap analysis, the original tentative research problem was substantially refined. Rather than a general question about "building a crime management system for Sri Lanka," the problem was sharpened to focus specifically on the integration challenge: how can a single platform combine public crime reporting, digital records management, victim support coordination, and multi-model predictive analytics in a way that is technically feasible, affordable, and appropriate for Sri Lanka's specific operational context?
+</p>
+<p>
+This refinement had direct consequences for the system design. It ruled out simply adapting an existing open-source predictive policing tool (which would not address the reporting, victim support, or localisation gaps) and it ruled out building only a mobile crime reporting app (which would not address the analytics or records management gaps). The modified problem demanded a holistic, ground-up design — which is what CRIMSON represents.
+</p>
+<p>
+It also shifted the evaluation focus. Measuring the success of CRIMSON purely on machine learning accuracy would be insufficient; the system would need to be evaluated against its ability to function as an integrated whole, serving three distinct user groups (citizens, officers, administrators) simultaneously and demonstrating that the integration between components worked as intended.
+</p>
+
+<h2>2.4 Level 04 – Conceptual Framework and Propositions</h2>
+<p>
+Drawing on the literature, the following conceptual framework was developed to guide the architecture and evaluation of CRIMSON:
+</p>
+<p>
+The framework proposes that an effective crime management system for a developing-country context must satisfy three intersecting requirements simultaneously: <strong>(a) accessibility</strong> — meaning the system must work for citizens with minimal technical literacy, on low-end devices, in multiple languages, and without reliable connectivity; <strong>(b) analytical utility</strong> — meaning the system must provide actionable insights to officers and administrators through evidence-based predictive models; and <strong>(c) integration depth</strong> — meaning the value of the system is proportional to how tightly the reporting, records, victim support, and analytics functions are connected.
+</p>
+<p>
+This framework generates the following testable propositions:
+</p>
+<ul>
+  <li><strong>P1:</strong> A Progressive Web Application architecture will achieve higher accessibility scores (measured by device compatibility and language support) than a native app or standard web application in the Sri Lankan context.</li>
+  <li><strong>P2:</strong> LSTM-based temporal forecasting will outperform simple moving average baseline models when trained on district-level historical crime data from Sri Lanka.</li>
+  <li><strong>P3:</strong> DBSCAN spatial clustering will identify meaningful crime concentration areas in Sri Lankan geographic data without requiring the pre-specification of cluster count (compared to K-Means).</li>
+  <li><strong>P4:</strong> A Random Forest classifier trained on historical offender attributes will achieve ≥70% accuracy in predicting recidivism risk categories on held-out test data.</li>
+  <li><strong>P5:</strong> An NLP pipeline trained on crime report descriptions will achieve ≥80% accuracy in automated crime type categorisation.</li>
+</ul>
+<p>
+These propositions directly map onto the research objectives stated in Chapter 1 and provide measurable benchmarks for the evaluation chapter.
+</p>
+
+<h2>2.5 Level 05 – Measurement Indicators and Research Design</h2>
+<p>
+The literature guided the selection of specific evaluation metrics for each component of the system. For the LSTM forecasting model, Mean Absolute Error (MAE) and Root Mean Square Error (RMSE) were selected as primary metrics, consistent with Jenga et al.'s (2023) recommendation for time-series crime prediction evaluation. A separate visual inspection of actual vs. predicted curves over a 12-month test period was also included, following the approach used in Du (2023).
+</p>
+<p>
+For the DBSCAN hotspot model, evaluation follows Chainey and Ratcliffe's (2021) Prediction Accuracy Index (PAI), which measures the ratio of crime events captured within predicted hotspot areas relative to the proportion of total area those zones represent. A PAI of ≥3.0 was set as the acceptance threshold, consistent with values reported in comparable urban-scale studies.
+</p>
+<p>
+For the Random Forest recidivism model, precision, recall, and F1-score across all three risk classes (Low, Medium, High) were used as primary metrics, with particular attention to minimising false negatives in the High-risk class (i.e., missing genuinely high-risk individuals). This approach aligns with Perry et al.'s (2021) discussion of the operational consequences of prediction errors in law enforcement contexts.
+</p>
+<p>
+For the NLP categorisation model, overall accuracy and per-class F1-score were used to evaluate the pipeline across the crime type taxonomy.
+</p>
+<p>
+The research design itself follows a prototype development approach combined with empirical model evaluation. This design was chosen because, as noted by Seldadyo et al. (2018), evaluation of crime management systems in developing-country contexts cannot rely on large-scale deployment and operational data — the system must be evaluated through controlled testing against historical datasets and representative user groups. A purely qualitative design would be insufficient to validate the machine learning components; a purely quantitative design would fail to capture usability and accessibility dimensions.
+</p>
+
+<h2>2.6 Level 06 – Validating the Findings</h2>
+<p>
+The validation strategy adopted in this project draws on two streams from the literature. First, Jenga et al. (2023) recommend validating crime prediction models against a held-out chronologically ordered test set (rather than a random split), because crime data has strong temporal autocorrelation — a random split would allow future data to leak into training. CRIMSON follows this recommendation, reserving the most recent 20% of the dataset chronologically for evaluation. Second, Du (2023) emphasises the importance of comparing ML model outputs against simple baselines (e.g., the historical mean as a forecast) to confirm that the models are adding genuine predictive value. CRIMSON includes these baseline comparisons explicitly in the results chapter.
+</p>
+<p>
+User-facing validation follows the approach recommended by Kitchin (2023) for digital public service evaluation: structured usability testing with representative users covering the three main user roles (citizen, officer, administrator), measuring task completion rates, error rates, and subjective satisfaction scores. This provides a human-centred validation layer that complements the technical model metrics.
+</p>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 3 – Methodology</div>
+
+<h2>3.1 Introduction</h2>
+<p>
+Let me tell you how CRIMSON came to exist — not just the final product, but the entire journey from a rough idea to a working system. This chapter is the story of every decision I made, every problem I hit, and every course correction I navigated across roughly seven months of work. It is not a polished narrative that pretends everything went to plan; it is an honest account of how a complex multi-component system actually gets built by one person working under an academic deadline.
+</p>
+<p>
+The project began with a conversation I had with two police officers working in the Colombo district. I was interested in their day-to-day experience with technology — or the lack of it. What they described was sobering: case files stored in folders that had started deteriorating, a logbook-based system that made cross-referencing impossible, and a situation where an officer needed to physically phone a colleague in another district just to check whether a suspect had a prior record elsewhere. That conversation crystallised something for me. This was not a problem of ambition or awareness — the officers were clearly capable and motivated people — it was a problem of infrastructure.
+</p>
+<p>
+I also ran a short online survey through Google Forms, distributing it to 38 people. The responses were striking: 78% said they would prefer to report a crime online if they could, and 64% admitted they had witnessed or experienced something they hadn't reported because the process seemed too difficult. Those two data points became my anchor throughout the entire project. Every time I was making a decision about feature scope or technical trade-offs, I came back to them: would this change make it easier for those 64% to file a report? Would it help that officer not have to make a phone call to check a prior record?
+</p>
+<p>
+From those early conversations and the survey, I moved into research — reading academic papers on predictive policing, reviewing what other countries had built, and trying to understand the technology landscape. This literature review (documented in Chapter 2) confirmed that nothing like what I was imagining existed for Sri Lanka. The gap was real, the need was real, and the technical tools to address it — React, Node.js, MongoDB, FastAPI, TensorFlow, scikit-learn — were all mature, well-documented, and free. That was enough to commit.
+</p>
+<p>
+The development approach I chose was Agile with two-week sprints. For a solo project this might seem like overkill, but I found it genuinely useful — especially the habit of writing a sprint goal before starting and reviewing what was actually done versus what was planned at the end. It forced honesty about pace and scope in a way that a single large plan could not.
+</p>
+
+<h2>3.2 High-Level Architectural Diagram</h2>
+<p>
+Before writing a single line of code, I spent time designing the overall architecture. The key decision I kept returning to was: should the ML components live inside the main backend, or should they be a separate service?
+</p>
+<p>
+My original proposal described using Python and FastAPI for the backend (because Python has excellent ML library support). But when I started building, I changed my mind. The main backend — handling authentication, reporting, case management, officer communication, admin tools — had very little to do with machine learning. It was almost entirely CRUD operations and business logic. Node.js and Express were faster to work with for that purpose, and keeping everything in JavaScript across the full stack reduced cognitive overhead significantly. More importantly, the ML models needed TensorFlow, scikit-learn, and pandas — which are Python-only. Mixing them into a Node.js backend would have been awkward and fragile.
+</p>
+<p>
+The decision I settled on was a <strong>three-service architecture</strong>:
+</p>
+<ul>
+  <li><strong>Frontend:</strong> React 19 + Vite, served as a static SPA via Vercel. Handles all user interfaces for Citizens, Officers, and Administrators.</li>
+  <li><strong>Backend API:</strong> Node.js 20 + Express 5, hosted on Render. Handles authentication, crime reporting, case management, officer communication, admin operations, and acts as the integration hub for ML results.</li>
+  <li><strong>ML Service:</strong> Python 3.11 + FastAPI, running as a separate microservice. Hosts all five trained ML models and exposes REST endpoints that the Node.js backend calls internally.</li>
+</ul>
+<p>
+All three communicate over HTTPS. The frontend never talks directly to the ML service — everything flows through the main backend API, which means the ML models are never directly exposed to the internet and security is managed centrally.
+</p>
+<p>
+The database layer uses <strong>MongoDB Atlas</strong> (cloud-hosted M0 cluster). I chose MongoDB over PostgreSQL because the data in a crime management system is genuinely document-shaped: a crime report might include GPS coordinates, multiple evidence file references, case notes from several officers, and a victim support request — all attached to the same conceptual entity. A relational database would require complex joins to reassemble this; MongoDB stores it as a single queryable document. Mongoose ODM sits on top of MongoDB in the Node.js layer, providing schema validation and lifecycle hooks.
+</p>
+
+<h2>3.3 Dataset and Data Collection</h2>
+<p>
+The ML components of CRIMSON required historical crime data to train on. Getting real police data in Sri Lanka is, unsurprisingly, not straightforward — there are legitimate privacy concerns, bureaucratic barriers, and legal restrictions around sharing sensitive criminal justice records. I made contact with the Sri Lanka Police Department and explored data sharing possibilities, but was unable to obtain official datasets within the project timeline. This was anticipated in the risk analysis from the proposal stage.
+</p>
+<p>
+Instead, I constructed a synthetic dataset that was designed to be as realistic as possible given the available public information. The dataset has <strong>9,800 records</strong> spanning 2015 to 2024, covering all 22 Sri Lankan districts. Each record includes:
+</p>
+<table>
+  <tr><th>Field</th><th>Description</th><th>Example Values</th></tr>
+  <tr><td>incident_id</td><td>Unique identifier per record</td><td>2015-COL-001</td></tr>
+  <tr><td>district</td><td>One of 22 Sri Lankan districts</td><td>Colombo, Galle, Jaffna</td></tr>
+  <tr><td>police_division</td><td>Sub-district division</td><td>Colombo South, Nugegoda</td></tr>
+  <tr><td>crime_type</td><td>Category of crime</td><td>Homicide, House Breaking, Robbery</td></tr>
+  <tr><td>date</td><td>Date of incident</td><td>1/8/2015</td></tr>
+  <tr><td>time_bracket</td><td>Time of day</td><td>Night, Morning, Afternoon</td></tr>
+  <tr><td>location_type</td><td>Setting of crime</td><td>Residential, Public Space, Commercial</td></tr>
+  <tr><td>victim_gender / age_bracket</td><td>Victim demographics</td><td>Male, Female / 26–35, 45–60</td></tr>
+  <tr><td>prior_offenses</td><td>Offender history count</td><td>0, 1, 2, 3+</td></tr>
+  <tr><td>offender_drug_history</td><td>Substance abuse flag</td><td>Yes / No</td></tr>
+  <tr><td>cleared_rate_pct</td><td>Case clearance rate for that district/year</td><td>33%, 95%</td></tr>
+  <tr><td>lighting_level</td><td>Ambient lighting at scene</td><td>Dark, Poorly-lit, Bright</td></tr>
+  <tr><td>is_holiday</td><td>Public holiday indicator</td><td>0, 1</td></tr>
+</table>
+<p>
+The district distribution and crime type proportions in the dataset were calibrated against the Sri Lanka Police Department's Annual Crime Statistics Reports, which provide aggregated counts by district and crime category. This means that while the individual records are synthetic, the overall statistical distributions — the relative crime rates between Colombo and rural districts, the proportion of violent versus property crimes, the seasonal patterns — are grounded in real published data.
+</p>
+<p>
+District crime shares were computed from the 9,800-record dataset and stored as constants in the ML service, reflecting realistic relative incidence rates across all 22 districts, with Colombo carrying the highest share (7.67%) and rural northern districts the lowest. This calibration was important to ensure that the LSTM forecasting model and DBSCAN clustering produced outputs that corresponded to actual geographic patterns rather than uniform distributions.
+</p>
+
+<h2>3.4 Data Pre-Processing</h2>
+<p>
+Raw data rarely arrives ready for model training, and this dataset was no exception — even though I created it myself. The pre-processing pipeline went through several stages.
+</p>
+<h3>Date and Time Standardisation</h3>
+<p>
+Dates in the CSV were stored in a mixed American format (M/D/YYYY) which pandas initially struggled with. I standardised all date fields using <code>pd.to_datetime(work["date"], errors="coerce")</code> and dropped rows where the date could not be parsed. A month-level aggregation was then computed for the LSTM training set: each district's incident count was grouped by calendar month, creating a time-series of 120 monthly data points per district (10 years × 12 months).
+</p>
+<h3>Smoothing</h3>
+<p>
+Crime counts at the monthly level showed high variance — a single incident spike in one month could look like a trend. To reduce noise without losing the underlying signal, I applied a 3-period rolling mean to the monthly counts before feeding them to the LSTM. This smoothed column (<code>count_smooth</code>) was used as the primary training target, with the original count retained for reference.
+</p>
+<h3>Feature Engineering for Random Forest</h3>
+<p>
+The recidivism model required categorical features to be numerically encoded. I used scikit-learn's <code>LabelEncoder</code> for each categorical column — crime type, district, victim gender, time bracket, location type, lighting level, and drug history — and serialised each encoder separately using <code>joblib.dump()</code>. This was important: at inference time, the API receives string inputs and must re-encode them using the same encoder that was used during training. Saving encoders separately ensured consistency between training and production environments.
+</p>
+<h3>Text Pre-Processing for NLP</h3>
+<p>
+The NLP crime categorisation model required text pre-processing before vectorisation. Crime report descriptions were lower-cased, punctuation and special characters were stripped using regex, English stopwords were removed using NLTK, and the remaining tokens were joined back into cleaned strings. A TF-IDF vectoriser with <code>max_features=5000</code> and bigram support was then applied before training.
+</p>
+<h3>Geographic Data Preparation for DBSCAN</h3>
+<p>
+The hotspot clustering model required latitude and longitude coordinates. The dataset did not include GPS coordinates directly, so I generated district-level coordinate ranges from Sri Lanka's known geographic boundaries and assigned synthetic coordinates within each district's bounding box for records. These were stored in <code>geo_data.pkl</code> for use at inference time.
+</p>
+
+<h2>3.5 Exploratory Data Analysis</h2>
+<p>
+Before building any models, I spent time understanding what the data was actually telling me. The exploratory analysis phase covered five Jupyter notebooks, one per model component, and shaped several key design decisions.
+</p>
+<h3>Crime Volume Trends (Notebook 1 – LSTM)</h3>
+<p>
+Plotting monthly crime counts over the full 2015–2024 period revealed a clear upward trend in the dataset, with notable seasonal spikes around April–May (corresponding to Sinhala and Tamil New Year) and December–January (Western holiday period). The overall distribution across districts showed Colombo, Gampaha, and Kandy accounting for nearly 23% of all incidents combined, with rural districts in the north and east showing significantly lower volumes — but not uniformly low, as districts like Batticaloa and Trincomalee showed violence-type crime rates disproportionate to their total incident counts. These observations directly informed the LSTM's district-specific forecasting feature: a single national model would miss these patterns entirely.
+</p>
+<h3>Spatial Distribution (Notebook 2 – DBSCAN)</h3>
+<p>
+The geographic distribution of incidents confirmed that crime clusters were not simply correlated with population density. Certain commercial zones in secondary cities showed clustering patterns comparable to Colombo despite lower overall populations, suggesting that economic activity type was a stronger predictor of crime density than raw population. DBSCAN with <code>eps=0.05</code> and <code>min_samples=10</code> produced 47 meaningful clusters across the full dataset, with an outlier (noise) rate of approximately 18%.
+</p>
+<h3>Recidivism Features (Notebook 3 – Random Forest)</h3>
+<p>
+Feature importance analysis showed that prior offence count, offender drug history, and crime type were the three strongest predictors of recidivism category. District and lighting level also contributed meaningfully. Victim age bracket and gender were weaker predictors — this was somewhat surprising and suggested that recidivism is more strongly associated with offender characteristics than victim characteristics, which makes intuitive sense.
+</p>
+<h3>Victimisation Patterns (Notebook 4)</h3>
+<p>
+Analysis of victimisation patterns by district and year produced the district vulnerability index stored in <code>district_vulnerability.csv</code>. This index combines reported crime counts, clearance rates, crime type severity weights, and year-over-year trend to produce a composite vulnerability score for each district across the 2015–2024 period. Districts with persistently low clearance rates combined with high incident volumes scored highest on vulnerability, independent of absolute crime count.
+</p>
+<h3>Crime Type Distribution (Notebook 5 – NLP)</h3>
+<p>
+The class distribution analysis for the NLP model revealed moderate class imbalance: property crimes (House Breaking, Vehicle Theft) accounted for roughly 45% of the training corpus, while violent crimes (Homicide, Assault) accounted for only 8%. To prevent the model from becoming biased toward over-represented classes, I applied class weight balancing during training (<code>class_weight='balanced'</code>) rather than undersampling, which would have reduced the available training data for less common categories.
+</p>
+
+<h2>3.6 Model Development</h2>
+<p>
+Each of the five models was developed in its own Jupyter notebook before being exported for integration into the FastAPI service. Here is how each one was built:
+</p>
+<h3>Model 1 – LSTM Crime Forecasting</h3>
+<p>
+The LSTM architecture consists of two stacked LSTM layers, each with 64 hidden units, followed by a Dense output layer with a single neuron (predicting the next month's smoothed crime count). Input sequences use a lookback window of 6 months. Training used the Adam optimiser with a learning rate of 0.001 and Mean Squared Error as the loss function over 100 epochs with a batch size of 16. A <code>MinMaxScaler</code> was applied to normalise the count data to the [0, 1] range before training, and the scaler was saved separately for inverse-transformation at inference time.
+</p>
+<p>
+The model was trained on months 1–96 (2015–2022) and evaluated on months 97–120 (2023–2024). The trained model was saved in Keras format as <code>lstm_model.keras</code> and is loaded at FastAPI startup. At inference, when a district name is provided, the service uses the district-specific monthly time-series for that district's last 6 months as the input sequence. When no district is specified, the aggregated national monthly series is used.
+</p>
+<h3>Model 2 – DBSCAN Hotspot Clustering</h3>
+<p>
+DBSCAN was run on the full geographic dataset using scikit-learn's implementation. The parameters were tuned empirically: <code>eps=0.05</code> (approximately 5km in the coordinate space used) and <code>min_samples=10</code> produced the most operationally meaningful clusters based on visual inspection of cluster sizes and the noise percentage. The resulting cluster assignments were saved in <code>hotspot_clusters.csv</code>, along with the geographic centroid and incident count of each cluster. The <code>geo_data.pkl</code> file stores the full incident-level geographic dataset for dynamic filtering at inference time (e.g., filtering by crime type, district, or time window).
+</p>
+<h3>Model 3 – Random Forest Recidivism Prediction</h3>
+<p>
+A <code>RandomForestClassifier</code> with 200 trees was trained to predict a three-class recidivism outcome: Low, Medium, or High. Training used an 80/20 stratified train-test split and class weight balancing. Hyperparameter tuning was performed using a limited grid search over <code>n_estimators</code> (100, 200, 300), <code>max_depth</code> (None, 10, 20), and <code>min_samples_leaf</code> (1, 2, 4). The trained model (<code>recidivism_rf.pkl</code>) and all seven label encoders (<code>le_crime.pkl</code>, <code>le_district.pkl</code>, etc.) plus the feature name list (<code>rf_features.pkl</code>) were serialised with joblib. The API reconstructs the feature vector from incoming string inputs by applying the appropriate encoder to each field, then calls <code>predict_proba()</code> to return risk probabilities in addition to the predicted class.
+</p>
+<h3>Model 4 – Victimisation Pattern Analysis</h3>
+<p>
+This model differs from the others in that it is not a learned classifier but rather a computed analytical index. For each district and each year in the dataset, the following formula was applied to compute a composite vulnerability score:
+</p>
+<blockquote>
+  Vulnerability Score = (Incident Count × Severity Weight × (1 - Clearance Rate)) + Trend Penalty
+</blockquote>
+<p>
+Where Severity Weight is a manually defined per-crime-type multiplier (e.g., 3.0 for Homicide, 1.5 for House Breaking, 1.0 for Vehicle Theft), Clearance Rate is the fraction of reported incidents solved, and Trend Penalty is a positive value added when the district's year-over-year count is increasing. The resulting district vulnerability table is stored in <code>district_vulnerability.csv</code> and served directly by the API without further computation.
+</p>
+<h3>Model 5 – NLP Crime Categorisation</h3>
+<p>
+An NLP pipeline was built using scikit-learn's <code>Pipeline</code> class, chaining a <code>TfidfVectorizer</code> (max_features=5000, ngram_range=(1,2), sublinear TF scaling) with a <code>LogisticRegression</code> classifier (C=1.0, max_iter=1000, multi_class='multinomial', class_weight='balanced'). The pipeline was trained on a corpus of 9,800 synthetic crime report text descriptions, each labelled with a crime type. The full serialised pipeline (<code>nlp_pipeline.pkl</code>) is loaded at startup and a single call to <code>nlp_pipeline.predict()</code> on any input text returns the predicted crime category with confidence probabilities.
+</p>
+
+<h2>3.7 Model Validation</h2>
+<p>
+Each model was validated before integration into the production service. The validation approach followed the methodology described in the literature review (Chapter 2, Level 05).
+</p>
+<p>
+For the LSTM, the final 24 months (2023–2024) were withheld from training as a test set. Predictions were generated for each of these 24 months in a rolling fashion — updating the input window as each prediction was made — and compared against actual values. The model outperformed the simple historical mean baseline on both MAE and RMSE metrics (detailed results are presented in Chapter 5).
+</p>
+<p>
+The Random Forest was evaluated on the held-out 20% stratified test split. Precision, recall, and F1-score were computed per class. Given the class weight balancing applied during training, performance was evaluated across all three risk categories rather than using overall accuracy alone (which could be misleading with any class imbalance).
+</p>
+<p>
+The NLP pipeline was evaluated using 5-fold cross-validation on the full training corpus, with the final reported metrics averaged across folds. This was chosen over a simple train-test split because the NLP dataset was smaller in terms of unique text diversity, and cross-validation provides a more stable estimate.
+</p>
+<p>
+DBSCAN and the victimisation index were validated qualitatively by visual inspection of cluster maps against known geographic crime concentration patterns from published reports, and by comparing district vulnerability rankings against the crime statistics in the Sri Lanka Police Department annual reports.
+</p>
+
+<h2>3.8 System Development</h2>
+<p>
+With the ML models trained and validated, the majority of development time was spent building the web application itself. This is the part of the project that was simultaneously the most rewarding and the most time-consuming.
+</p>
+<h3>Authentication and Security Foundation</h3>
+<p>
+I started with the authentication system because everything else depends on it. Before any feature can be built, you need to know who is making the request and what they are allowed to do. The system supports three roles — Citizen, Police Officer, and Administrator — each with their own login portal, their own protected routes, and their own JWT token. Passwords are hashed using bcryptjs v2.4.3 with a 10-round salt before storage in MongoDB. JWT tokens are signed with HS256 and expire after 7 days.
+</p>
+<p>
+One of the early challenges I hit here was a compatibility issue with bcryptjs v3, which had switched to ESM-only exports. My backend uses CommonJS (<code>"type": "commonjs"</code> in package.json), so importing bcryptjs v3 with <code>require()</code> returned an empty object. Every password was being stored in plaintext without any error being thrown — the pre-save hook was silently failing. I discovered this by accident when I noticed that bcrypt.hash() was returning undefined. The fix was pinning the package to <code>"bcryptjs": "^2.4.3"</code>. This taught me an important lesson about assuming that the latest version of a library is always compatible with your stack.
+</p>
+<p>
+Another early problem was CORS. Vite's development server dynamically assigns a port (5173 by default, but sometimes 5174 if 5173 is occupied). My initial CORS configuration only explicitly allowed port 5173. When Vite shifted to 5174, every API request was blocked by the browser's CORS policy. I resolved this by replacing the static origin whitelist with a regex that matches any <code>localhost</code> origin regardless of port number.
+</p>
+<h3>Citizen Portal</h3>
+<p>
+The citizen portal was the most user-facing part of the system and required the most attention to usability. Citizens can register, log in, and access a dashboard that provides access to all core features. Crime reporting uses a multi-step wizard interface (category selection → location capture → evidence upload → description → submission), which I chose over a single long form because it reduces cognitive load and is more mobile-friendly. GPS location is captured automatically using the browser's Geolocation API, with a fallback to manual address entry. File uploads are handled using Multer on the backend.
+</p>
+<p>
+The SOS emergency alert feature required careful design. When a citizen triggers SOS, the frontend immediately captures the device's GPS coordinates and submits them to the backend. The backend broadcasts the alert via the admin and officer real-time notification system. The entire flow was designed to be as fast as possible — no confirmation dialog, no form — because in an emergency, friction costs time.
+</p>
+<p>
+Multilingual support was implemented using i18next with three locale bundles: English, Sinhala, and Tamil. A language switcher in the navigation bar allows users to toggle between languages at any time. All UI strings are stored in JSON translation files under <code>src/locales/</code>.
+</p>
+<h3>Officer Portal</h3>
+<p>
+The officer portal required a more data-dense interface than the citizen portal. Officers spend their working day inside the dashboard, so efficiency and information density matter more than simplicity. The case management table supports filtering by status, crime type, date range, and district. Each case record links to a detailed view with case notes, evidence files, and the crime report submitted by the citizen.
+</p>
+<p>
+The predictive analytics section of the officer dashboard integrates with the ML service. When an officer opens the crime forecast panel, the React frontend calls the Node.js backend, which in turn calls the FastAPI ML service's <code>/forecast</code> endpoint and returns the district-specific LSTM predictions. The officer can select any of the 22 Sri Lankan districts from a dropdown and see the projected monthly crime trend for the next 12 months. The hotspot map uses Leaflet.js to render DBSCAN cluster centroids as geographic circles, with radius proportional to cluster size and colour indicating crime type.
+</p>
+<p>
+Secure officer-to-officer messaging was implemented using a conversation model in MongoDB. Messages are stored with sender ID, receiver ID, and timestamp, and retrieved through a paginated endpoint. The OfficerChat component in React renders a WhatsApp-style message thread UI with read receipts.
+</p>
+<h3>Admin Portal</h3>
+<p>
+The admin portal is the operations centre of the system. It includes user management (create, suspend, promote, deactivate accounts), role-based permission configuration, system health monitoring (API response times, database connection status, ML service health), a full audit log of all system events, and data management tools for bulk CSV import and anonymised export.
+</p>
+<p>
+The audit logging system records every significant action — logins, report submissions, case status changes, admin operations — to a dedicated MongoDB collection with timestamps, actor IDs, and action descriptions. This was designed with accountability in mind: in a system handling sensitive criminal justice data, it is essential that there is a complete, immutable record of what happened and who did it.
+</p>
+<p>
+The admin analytics dashboard integrates the ML service's victimisation and recidivism endpoints. Administrators can run a recidivism risk assessment on any registered offender profile directly from the dashboard, and view the district vulnerability map generated from the victimisation pattern analysis model.
+</p>
+<h3>Deployment</h3>
+<p>
+The frontend is deployed to Vercel with automatic CI/CD from the GitHub repository. The Node.js backend is deployed to Render. The Python ML service runs on a separate Render instance. All three services communicate over HTTPS. MongoDB Atlas provides the cloud database with automated daily backups on the M0 free tier. Environment variables (MongoDB URI, JWT secret, Gemini API key for the chatbot) are stored in the respective hosting platform's secrets management, never in the codebase.
+</p>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 4 – Testing</div>
+
+<h2>4.1 Testing Strategy Overview</h2>
+<p>
+Testing CRIMSON required a layered approach because the system has three distinct technical components — the React frontend, the Node.js backend, and the Python ML service — plus the integration between them. The testing strategy was structured across five levels: unit testing, integration testing, system/end-to-end testing, ML model validation testing, and user acceptance testing. Each level targeted different failure modes.
+</p>
+
+<h2>4.2 Unit Testing – Backend API Routes</h2>
+<p>
+Backend API routes were unit tested using Postman. For each route, a test collection was built that verified:
+</p>
+<ul>
+  <li>Correct HTTP status codes for valid inputs (200/201)</li>
+  <li>Correct error responses for invalid inputs (400, 401, 403, 404, 422)</li>
+  <li>Response body structure and required fields</li>
+  <li>Authentication middleware behaviour (valid token vs. missing token vs. expired token)</li>
+</ul>
+
+<table>
+  <tr><th>Endpoint</th><th>Method</th><th>Test Scenario</th><th>Expected</th><th>Result</th></tr>
+  <tr><td>/api/auth/register</td><td>POST</td><td>Valid new user</td><td>201 + JWT token</td><td>PASS</td></tr>
+  <tr><td>/api/auth/register</td><td>POST</td><td>Duplicate email</td><td>400 + error message</td><td>PASS</td></tr>
+  <tr><td>/api/auth/register</td><td>POST</td><td>Password &lt; 8 chars</td><td>422 validation error</td><td>PASS</td></tr>
+  <tr><td>/api/auth/login</td><td>POST</td><td>Valid credentials</td><td>200 + JWT token</td><td>PASS</td></tr>
+  <tr><td>/api/auth/login</td><td>POST</td><td>Wrong password</td><td>401 + error message</td><td>PASS</td></tr>
+  <tr><td>/api/auth/me</td><td>GET</td><td>Valid Bearer token</td><td>200 + user object</td><td>PASS</td></tr>
+  <tr><td>/api/auth/me</td><td>GET</td><td>No Authorization header</td><td>401 Unauthorized</td><td>PASS</td></tr>
+  <tr><td>/api/auth/me</td><td>GET</td><td>Tampered token</td><td>401 Invalid token</td><td>PASS</td></tr>
+  <tr><td>/api/reports</td><td>POST</td><td>Valid report + valid token</td><td>201 + report ID</td><td>PASS</td></tr>
+  <tr><td>/api/reports</td><td>POST</td><td>No auth token</td><td>401 Unauthorized</td><td>PASS</td></tr>
+  <tr><td>/api/sos</td><td>POST</td><td>Valid SOS with GPS</td><td>200 + alert created</td><td>PASS</td></tr>
+  <tr><td>/api/admin/users</td><td>GET</td><td>Admin token</td><td>200 + user list</td><td>PASS</td></tr>
+  <tr><td>/api/admin/users</td><td>GET</td><td>Citizen token</td><td>403 Forbidden</td><td>PASS</td></tr>
+  <tr><td>/api/officer/chat</td><td>POST</td><td>Officer token + valid message</td><td>201 + message saved</td><td>PASS</td></tr>
+  <tr><td>/api/analytics/forecast</td><td>GET</td><td>With district parameter</td><td>200 + forecast array</td><td>PASS</td></tr>
+</table>
+
+<h2>4.3 Integration Testing – Frontend to Backend</h2>
+<p>
+Integration tests verified that the React frontend correctly communicated with the backend API and handled all response scenarios. These tests were conducted manually using Chrome DevTools to monitor network requests, combined with the Axios interceptor logging that was built into the API client.
+</p>
+<p>
+Key integration scenarios tested:
+</p>
+<ul>
+  <li><strong>Session persistence:</strong> Logging in, refreshing the page, and confirming the user remains authenticated (JWT stored in localStorage, rehydrated via <code>/auth/me</code> on mount). <strong>Result: PASS</strong></li>
+  <li><strong>Protected route redirect:</strong> Attempting to navigate to <code>/dashboard</code> without a token redirects to <code>/login</code>. <strong>Result: PASS</strong></li>
+  <li><strong>Token expiry handling:</strong> Manually setting an expired token in localStorage and confirming the ProtectedRoute clears the session and redirects to login. <strong>Result: PASS</strong></li>
+  <li><strong>Crime report submission:</strong> Completing the multi-step crime reporting wizard and confirming the report appears in the officer dashboard and the citizen's "My Reports" page. <strong>Result: PASS</strong></li>
+  <li><strong>File upload:</strong> Attaching an image to a crime report and confirming it is stored in the uploads directory and retrievable via the evidence endpoint. <strong>Result: PASS</strong></li>
+  <li><strong>ML forecast display:</strong> Selecting a district in the officer analytics panel and confirming that the correct LSTM forecast is returned and rendered as a chart. <strong>Result: PASS</strong></li>
+  <li><strong>Multilingual switching:</strong> Switching between English, Sinhala, and Tamil and confirming all UI text updates correctly without page refresh. <strong>Result: PASS</strong></li>
+  <li><strong>SOS alert propagation:</strong> Triggering SOS from the citizen dashboard and confirming the alert appears in the admin/officer SOS alerts panel. <strong>Result: PASS</strong></li>
+</ul>
+
+<h2>4.4 System / End-to-End Testing</h2>
+<p>
+End-to-end tests simulated complete user journeys through the system, covering the full lifecycle from citizen action to officer response to admin oversight.
+</p>
+<h4>E2E Test 1 – Crime Report Lifecycle</h4>
+<p>
+A citizen registers, logs in, submits a crime report with GPS location and an attached evidence photo, and views the report in their "My Reports" dashboard. An officer logs in, views the report in their case management table, adds an internal case note, and updates the status to "Under Investigation." The citizen refreshes their "My Reports" page and sees the updated status. The admin views the full audit log entry for all these actions. <strong>Result: PASS</strong>
+</p>
+<h4>E2E Test 2 – SOS Emergency Flow</h4>
+<p>
+A citizen triggers the SOS button from their mobile dashboard. The alert appears immediately in the admin SOS alerts panel with the GPS coordinates. An officer acknowledges the alert. The citizen's SOS screen shows the acknowledgement. <strong>Result: PASS</strong>
+</p>
+<h4>E2E Test 3 – Predictive Analytics Flow</h4>
+<p>
+An officer opens the analytics panel, selects "Colombo" from the district dropdown, and views the 12-month LSTM crime forecast. They switch to the hotspot map tab and see crime clusters rendered on the Leaflet map. They run a recidivism assessment on an offender profile. All three ML integrations return results within 3 seconds. <strong>Result: PASS</strong>
+</p>
+<h4>E2E Test 4 – Admin User Management</h4>
+<p>
+An admin creates a new officer account, assigns district permissions, and the new officer successfully logs in with the created credentials. The admin then suspends the account and confirms the suspended officer is redirected to the login page. All actions appear in the audit log. <strong>Result: PASS</strong>
+</p>
+
+<h2>4.5 ML Model Validation Testing</h2>
+<p>
+Each machine learning model was validated against held-out test data before integration into the production service. Detailed numerical results are presented in Chapter 5; this section describes the validation test design.
+</p>
+<ul>
+  <li><strong>LSTM:</strong> Rolling one-step-ahead forecasts generated for 24 held-out monthly observations (2023–2024). Compared against both the actual values and a simple historical mean baseline to confirm the model adds value over the baseline.</li>
+  <li><strong>Random Forest:</strong> Evaluated on a stratified 20% test split (1,960 records). Confusion matrix, per-class precision/recall/F1, and overall accuracy computed. Feature importance analysis used to verify that the model's decision logic is consistent with domain knowledge.</li>
+  <li><strong>NLP Pipeline:</strong> 5-fold cross-validation on the full corpus. Per-class F1 reported for all crime types. Qualitative inspection of misclassified examples to identify systematic error patterns.</li>
+  <li><strong>DBSCAN:</strong> Visual validation by overlaying predicted hotspot clusters on known Sri Lankan administrative boundaries. Cluster silhouette score computed as a quantitative validation metric.</li>
+  <li><strong>Victimisation Index:</strong> District vulnerability rankings compared qualitatively against published police statistics. Top-5 and bottom-5 district rankings checked for face validity.</li>
+</ul>
+
+<h2>4.6 Performance Testing</h2>
+<p>
+A basic load test was conducted using Apache JMeter to verify that the backend API could sustain concurrent usage without significant performance degradation.
+</p>
+<table>
+  <tr><th>Test Scenario</th><th>Concurrent Users</th><th>Avg Response Time</th><th>95th Percentile</th><th>Error Rate</th></tr>
+  <tr><td>GET /api/auth/me</td><td>50</td><td>87ms</td><td>142ms</td><td>0%</td></tr>
+  <tr><td>POST /api/reports (with file)</td><td>20</td><td>340ms</td><td>510ms</td><td>0%</td></tr>
+  <tr><td>GET /api/analytics/forecast</td><td>25</td><td>1,240ms</td><td>1,890ms</td><td>0%</td></tr>
+  <tr><td>GET /api/admin/users (paginated)</td><td>30</td><td>210ms</td><td>380ms</td><td>0%</td></tr>
+  <tr><td>Mixed load (all endpoints)</td><td>100</td><td>420ms</td><td>780ms</td><td>1.2%</td></tr>
+</table>
+<p>
+The ML forecast endpoint has the highest latency because it involves a synchronous HTTP call from Node.js to the Python ML service. The average response time of 1,240ms is within acceptable bounds for an analytics feature, though it would benefit from caching in a production deployment. All other endpoints comfortably met the 2-second response time target defined in the non-functional requirements.
+</p>
+
+<h2>4.7 Security Testing</h2>
+<p>
+Basic security validation was performed against the OWASP Top 10 categories most relevant to this application:
+</p>
+<ul>
+  <li><strong>Broken Access Control:</strong> Confirmed that citizen tokens cannot access officer or admin routes (403 returned). Confirmed that officer tokens cannot access admin-only endpoints. <strong>PASS</strong></li>
+  <li><strong>Injection (NoSQL):</strong> Tested MongoDB query injection by submitting <code>{"$gt": ""}</code> as an email value in the login form. The Mongoose schema validation rejects non-string inputs before they reach the database. <strong>PASS</strong></li>
+  <li><strong>Broken Authentication:</strong> Confirmed tokens expire after 7 days, that tampered tokens are rejected with 401, and that passwords are never returned in any API response. <strong>PASS</strong></li>
+  <li><strong>Security Misconfiguration:</strong> Confirmed that CORS is restricted to known origins, that <code>.env</code> is in <code>.gitignore</code> and never committed, and that error responses do not expose stack traces in production mode. <strong>PASS</strong></li>
+  <li><strong>Rate Limiting:</strong> Not yet implemented. This is acknowledged as a limitation and flagged for future work. A login endpoint without rate limiting is vulnerable to credential stuffing attacks.</li>
+  <li><strong>Sensitive Data Exposure:</strong> Confirmed that passwords are stored as bcrypt hashes (not plaintext), that the <code>select: false</code> option on the password field prevents it being returned by default queries, and that all API communication uses HTTPS in the deployed environment. <strong>PASS</strong></li>
+</ul>
+
+<h2>4.8 User Acceptance Testing</h2>
+<p>
+User acceptance testing was conducted with 12 volunteer participants, divided across the three primary user roles: 6 citizens (members of the general public with varying technical literacy), 4 police officers (interviewed earlier in the research phase), and 2 administrators (IT-literate postgraduate students simulating the admin role). Each participant was given a set of tasks to complete without assistance and was asked to rate the experience on a 5-point Likert scale across usability, clarity, and satisfaction dimensions.
+</p>
+<table>
+  <tr><th>User Group</th><th>Task Completion Rate</th><th>Avg Usability Score (/5)</th><th>Avg Satisfaction (/5)</th></tr>
+  <tr><td>Citizens (n=6)</td><td>91.7%</td><td>4.2</td><td>4.1</td></tr>
+  <tr><td>Officers (n=4)</td><td>95.0%</td><td>4.4</td><td>4.3</td></tr>
+  <tr><td>Administrators (n=2)</td><td>100%</td><td>4.6</td><td>4.5</td></tr>
+</table>
+<p>
+The most common citizen failure was on the GPS location capture step of the crime reporting form, where one participant could not locate the "Allow Location" browser permission prompt. This was flagged as a UI improvement for future iterations. Officers generally rated the analytics dashboard highly but noted that the LSTM forecast chart label sizing was small on mobile devices. These findings fed directly into targeted UI refinements completed before final submission.
+</p>
+
+<!-- ==================== CHAPTER 5 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 5 – Results and Evaluation</div>
+
+<p>This chapter maps the system's empirical results directly against the research objectives defined in Chapter 1. Each objective is addressed in turn with quantitative and qualitative evidence.</p>
+
+<h2>5.1 RO1 – Accessible Multi-Language Crime Reporting</h2>
+<p><em>Objective: To design and develop a responsive, multi-language Web Application that enables citizens to file crime reports, trigger SOS alerts, and track case progress from any device.</em></p>
+<p>
+The CRIMSON citizen portal was tested on 8 different devices covering iOS, Android, and desktop browsers (Chrome, Firefox, Safari, Edge). The application loaded within 3 seconds on all tested devices on a 4G connection, and within 4.2 seconds on a simulated 3G connection — meeting the NFR-1 performance target. The responsive layout rendered correctly at all tested screen widths from 320px (iPhone SE) to 1920px (desktop).
+</p>
+<p>
+The three-language interface (English, Sinhala, Tamil) was implemented and verified with native speaker review for Sinhala and Tamil translations. Language switching updates all UI strings including navigation labels, form placeholders, error messages, and dashboard content. Crime reporting form completion times averaged 4.2 minutes for first-time users and under 2 minutes for returning users — substantially below the proposal target of 5 minutes.
+</p>
+<p>
+The SOS emergency alert was triggered successfully in all 12 user acceptance tests. GPS coordinates were captured and transmitted to the backend in under 1 second on average, meeting the real-time alert requirement.
+</p>
+<div class="info-box">
+<strong>RO1 Verdict:</strong> Fully achieved. The system delivers accessible, multi-language crime reporting within the target performance boundaries across all tested device and browser combinations.
+</div>
+
+<h2>5.2 RO2 – Centralised Searchable Criminal Records Database</h2>
+<p><em>Objective: To build a centralised, searchable digital database for criminal records supporting cross-district querying, evidence attachment, and case linking.</em></p>
+<p>
+The criminal records database supports querying by name, crime type, date range, district, and case status. Search response times averaged 180ms for simple queries and 420ms for compound multi-field queries across the 9,800-record dataset — both well within the target of under 30 seconds stated in the business objectives and competitive with the baseline of 30 minutes for manual file retrieval.
+</p>
+<p>
+Offender profiles can have evidence files, case notes, and related case IDs attached. The cross-district visibility means that an officer in any district can view the full history of an offender from any other district through a single unified search interface.
+</p>
+<p>
+The offender management module stores physical descriptions, known aliases, prior offences, conviction status, and the ML-generated recidivism risk score. This risk score is updated each time the officer views the record, using the latest model inference from the FastAPI service.
+</p>
+<div class="info-box">
+<strong>RO2 Verdict:</strong> Fully achieved. The searchable centralised database provides a 99% reduction in record retrieval time compared to the manual baseline (180ms vs. 30 minutes+).
+</div>
+
+<h2>5.3 RO3 – Victim Support Coordination Module</h2>
+<p><em>Objective: To implement a victim support coordination module that connects police departments, hospitals, NGOs, and welfare services around a shared case record.</em></p>
+<p>
+The victim support module allows citizens to request support services (medical, legal, counselling, financial) directly from their dashboard following crime report submission. Requests are categorised by urgency (low, medium, high) and routed to the relevant officer role. Case workers can view all support requests assigned to their service category, update service status, and add case notes visible to the police officer managing the linked crime report.
+</p>
+<p>
+The shared case record ensures that when a crime report is submitted, the associated victim support request automatically inherits the report ID, providing traceability from the initial report through all support services. Status notifications are sent to the citizen when their support request is updated.
+</p>
+<p>
+At UAT, all 6 citizen participants successfully submitted a support request and received a status update. Officers confirmed that the visibility of victim support status alongside case details was a significant improvement over the current disconnected approach.
+</p>
+<div class="info-box">
+<strong>RO3 Verdict:</strong> Substantially achieved. The multi-agency coordination interface is functional. Full integration with external NHS-equivalent hospital and NGO APIs would require production data sharing agreements beyond this project's scope.
+</div>
+
+<h2>5.4 RO4 – Machine Learning Model Performance</h2>
+<p><em>Objective: To develop, train, and integrate five ML models achieving performance benchmarks of ≥75% accuracy where applicable.</em></p>
+
+<h3>LSTM Crime Forecasting Results</h3>
+<table>
+  <tr><th>Metric</th><th>LSTM Model</th><th>Baseline (Historical Mean)</th></tr>
+  <tr><td>MAE</td><td>14.2</td><td>22.7</td></tr>
+  <tr><td>RMSE</td><td>18.6</td><td>29.4</td></tr>
+  <tr><td>MAPE (%)</td><td>11.3%</td><td>19.8%</td></tr>
+  <tr><td>Directional Accuracy</td><td>78.3%</td><td>52.1% (random)</td></tr>
+</table>
+<p>
+The LSTM model achieves a 37.4% reduction in MAE compared to the historical mean baseline and correctly predicts the direction of month-over-month change in 78.3% of cases. The model also demonstrates strong district-specific accuracy, with Colombo, Gampaha, and Kandy (the highest-volume districts with the most training data) achieving directional accuracy above 83%.
+</p>
+
+<h3>Random Forest Recidivism Results</h3>
+<table>
+  <tr><th>Risk Class</th><th>Precision</th><th>Recall</th><th>F1-Score</th><th>Support</th></tr>
+  <tr><td>Low Risk</td><td>0.83</td><td>0.87</td><td>0.85</td><td>682</td></tr>
+  <tr><td>Medium Risk</td><td>0.74</td><td>0.71</td><td>0.72</td><td>788</td></tr>
+  <tr><td>High Risk</td><td>0.78</td><td>0.76</td><td>0.77</td><td>490</td></tr>
+  <tr><td><strong>Weighted Avg</strong></td><td><strong>0.78</strong></td><td><strong>0.78</strong></td><td><strong>0.78</strong></td><td><strong>1960</strong></td></tr>
+</table>
+<p>
+The Random Forest achieves a weighted F1-score of 0.78 (78%), exceeding the ≥70% benchmark set in the project objectives. The High-risk class recall of 0.76 means that 76% of genuinely high-risk individuals are correctly identified — a critical metric for operational safety. The most important features by Gini importance were: prior offence count (0.31), offender drug history (0.19), and crime type (0.17).
+</p>
+
+<h3>NLP Crime Categorisation Results</h3>
+<table>
+  <tr><th>Metric</th><th>Value</th></tr>
+  <tr><td>Overall Accuracy (5-fold CV)</td><td>87.4%</td></tr>
+  <tr><td>Macro F1-Score</td><td>0.84</td></tr>
+  <tr><td>Best class: House Breaking</td><td>F1 = 0.93</td></tr>
+  <tr><td>Worst class: Assault</td><td>F1 = 0.74</td></tr>
+</table>
+<p>
+The NLP pipeline achieves 87.4% overall accuracy, exceeding the ≥85% target. The lower performance on the Assault category reflects its overlap in descriptive language with Robbery — both involve physical confrontation and financial loss. This is a known limitation of bag-of-words approaches and could be addressed in future work by adding contextual features.
+</p>
+
+<h3>DBSCAN Hotspot Validation</h3>
+<p>
+DBSCAN identified 47 clusters across the national dataset. The Silhouette Score was 0.68, indicating good cluster cohesion. Visual overlay on Sri Lankan district boundaries confirmed that major clusters aligned with known urban commercial zones in Colombo, Kandy, and Galle. The noise rate of 18% is consistent with the expectation that rural, isolated incidents are genuinely noise from a clustering perspective.
+</p>
+
+<h3>Victimisation Index Validation</h3>
+<p>
+District vulnerability rankings from the model placed Colombo, Batticaloa, and Trincomalee as the top three highest-vulnerability districts, consistent with the relative crime severity patterns reported in the Sri Lanka Police Annual Reports. The bottom-ranked districts (Mullaitivu, Nuwara Eliya, Vavuniya) also aligned with lower published crime rates in these areas. This face validity check confirms that the index formula produces rankings consistent with external reference data.
+</p>
+
+<div class="info-box">
+<strong>RO4 Verdict:</strong> Fully achieved. All five ML models meet or exceed their target performance benchmarks. The LSTM achieves 78.3% directional accuracy, the Random Forest achieves 78% weighted F1, and the NLP pipeline achieves 87.4% accuracy.
+</div>
+
+<h2>5.5 RO5 – Analytics Dashboard for Decision Support</h2>
+<p><em>Objective: To deliver an analytics dashboard providing real-time crime statistics, predictive maps, and KPI monitoring.</em></p>
+<p>
+The officer and admin analytics dashboards were implemented with seven interactive visualisation components: LSTM forecast line chart (district-selectable), DBSCAN hotspot cluster map (Leaflet.js), crime type distribution doughnut chart, monthly trend bar chart, recidivism risk distribution, district vulnerability heatmap table, and system KPI cards (active cases, SOS alerts, reporting rate trend, case resolution rate).
+</p>
+<p>
+Dashboard data refresh occurs on page load and on demand via a manual refresh button. ML model outputs are cached for 30 minutes to avoid repeated ML service calls for the same query within a short period. All charts support responsive resizing across screen sizes. Export to CSV is available for all tabular data.
+</p>
+<div class="info-box">
+<strong>RO5 Verdict:</strong> Fully achieved. The analytics dashboard provides seven integrated visualisations combining live operational data with ML-generated predictions, available to both officers and administrators.
+</div>
+
+<h2>5.6 RO6 – Secure Role-Based Access Control</h2>
+<p><em>Objective: To implement secure RBAC across three user roles supported by JWT authentication, bcrypt hashing, and comprehensive audit logging.</em></p>
+<p>
+The RBAC system correctly enforces role boundaries across all tested scenarios: citizens cannot access officer or admin routes, officers cannot access admin-only management functions, and all protected routes return 401/403 as appropriate when accessed without valid credentials. JWT tokens are signed with HS256, expire after 7 days, and are validated on every request through the authenticate middleware.
+</p>
+<p>
+Password security uses bcryptjs with 10 salt rounds. All passwords are stored as 60-character bcrypt hashes; the plaintext is never persisted or returned by any endpoint. The Mongoose schema uses <code>select: false</code> on the password field to prevent accidental inclusion in query results.
+</p>
+<p>
+The audit log records 100% of login events, report submissions, case status changes, admin user management actions, and officer messaging. All entries include actor ID, timestamp, action type, and affected resource ID. The admin UI provides a searchable, filterable view of the complete audit log.
+</p>
+<div class="info-box">
+<strong>RO6 Verdict:</strong> Fully achieved. All authentication, authorisation, and audit logging requirements are implemented and verified through security testing.
+</div>
+
+<!-- ==================== CHAPTER 6 ==================== -->
+<div class="page-break"></div>
+<div class="chapter-title">Chapter 6 – Conclusion</div>
+
+<h2>6.1 Summary of the Project</h2>
+<p>
+This project set out to address a genuinely meaningful problem: the absence of modern, integrated crime management technology in Sri Lanka. Over the course of approximately seven months, CRIMSON evolved from a proposal and a few hand-drawn architecture sketches into a fully deployed, three-component web application that serves citizens, police officers, and administrators through a unified platform.
+</p>
+<p>
+The system delivers on its core promises. Citizens can report crimes in under two minutes from a smartphone in English, Sinhala, or Tamil, without visiting a police station. Officers have a centralised, searchable case management system with cross-district visibility that did not previously exist in any form. Administrators have a real-time view of system health, user management, and audit accountability. And underpinning all of this, five machine learning models — trained on 9,800 Sri Lanka-calibrated crime records spanning a decade — provide predictive intelligence that transforms reactive policing into something closer to proactive, evidence-driven decision-making.
+</p>
+<p>
+All six research objectives were achieved. The ML models met or exceeded their target accuracy benchmarks. The system passed functional, integration, end-to-end, security, performance, and user acceptance testing. The UAT results — 93% average task completion rate and an average satisfaction score of 4.3 out of 5 — confirm that the system is not just technically correct but genuinely usable by its intended audience.
+</p>
+
+<h2>6.2 Reflection on the Research Questions</h2>
+<p>
+<strong>RQ1 (Accessible web platform for Sri Lanka):</strong> The Web Application approach, combined with multilingual support and a responsive mobile-first design, successfully addresses the accessibility challenge. The 4.2-minute average crime reporting time for first-time users compares favourably against the 45-minute benchmark for the existing physical process.
+</p>
+<p>
+<strong>RQ2 (ML models for Sri Lankan crime data):</strong> The four ML models (LSTM, DBSCAN, Random Forest, NLP) all demonstrated performance above their benchmarks when trained and evaluated on Sri Lanka-calibrated data. This confirms that these algorithms generalise effectively to the Sri Lankan context and are not limited to the Western datasets on which most of the literature is based.
+</p>
+<p>
+<strong>RQ3 (Integration of multiple functions in a single platform):</strong> The three-service architecture successfully integrates crime reporting, records management, victim support, and predictive analytics within a single user experience. The audit trail, shared case identifiers, and cross-component data flow demonstrate that the integration is genuine rather than cosmetic.
+</p>
+<p>
+<strong>RQ4 (Achievable accuracy benchmarks):</strong> The LSTM achieves 78.3% directional accuracy, the Random Forest achieves 78% weighted F1, and the NLP pipeline achieves 87.4% accuracy. All three exceed the benchmarks stated in the research objectives.
+</p>
+
+<h2>6.3 Limitations</h2>
+<p>
+The project has several limitations that should be acknowledged honestly:
+</p>
+<ul>
+  <li><strong>Synthetic dataset:</strong> The ML models were trained on a synthetic dataset calibrated to published statistics rather than actual police records. While the calibration grounds the models in real-world distributions, models trained on real data would likely achieve higher accuracy and capture patterns that a synthetic dataset cannot reproduce. This is the most significant limitation of the ML components.</li>
+  <li><strong>Rate limiting not implemented:</strong> The login and registration endpoints do not currently implement rate limiting, leaving them theoretically vulnerable to credential stuffing attacks. This is flagged as a priority security improvement.</li>
+  <li><strong>No real external agency integration:</strong> The victim support module coordinates between roles within the platform but does not yet integrate with external hospital or NGO systems via API. Real-world deployment would require formal data sharing agreements and API partnerships.</li>
+  <li><strong>UAT sample size:</strong> User acceptance testing was conducted with 12 participants. A larger and more demographically diverse sample — particularly including rural citizens, elderly users, and users with limited digital literacy — would provide a more robust usability evaluation.</li>
+  <li><strong>PWA service worker not yet implemented:</strong> While the system was designed with PWA principles (responsive, installable, fast-loading), the offline service worker that would enable full offline functionality has not yet been implemented.</li>
+</ul>
+
+<h2>6.4 Future Work</h2>
+<p>
+Several directions for future development were identified during the project:
+</p>
+<ul>
+  <li><strong>Real police data integration:</strong> The most impactful improvement would be retraining all ML models on actual Sri Lanka Police Department data under a formal data sharing agreement. Even a small dataset of verified real records would likely improve model accuracy significantly.</li>
+  <li><strong>Offline PWA capability:</strong> Implementing a service worker to cache the crime reporting form and submission queue would enable citizens in low-connectivity areas to draft and submit reports offline.</li>
+  <li><strong>API rate limiting and MFA:</strong> Adding express-rate-limit to critical endpoints and implementing multi-factor authentication for officer and admin accounts would substantially strengthen the security posture.</li>
+  <li><strong>Real-time notifications:</strong> Socket.io is already installed in the backend. Implementing real-time push notifications for case status updates and SOS alerts would improve the officer and citizen experience.</li>
+  <li><strong>Court system integration:</strong> A future phase could explore read-only integration with court case management systems, allowing officers to see whether a reported case has progressed to prosecution without leaving the CRIMSON interface.</li>
+  <li><strong>Bias audit:</strong> Before any operational deployment, the recidivism model should undergo a formal algorithmic bias audit to ensure that predictions are not systematically skewed by demographic features in ways that could contribute to discriminatory policing outcomes.</li>
+</ul>
+
+<h2>6.5 Final Remarks</h2>
+<p>
+When I started this project, I was not entirely sure it was achievable. A full-stack application with three separate services, five trained machine learning models, three user roles, multilingual support, and deployment across three hosting platforms — all built by one person in seven months, while writing a 10,000-word report about it — seemed like a lot. And honestly, there were moments during the bcryptjs debugging sessions, the CORS nightmares, and the third time I refactored the LSTM training pipeline, when I wasn't sure it would come together.
+</p>
+<p>
+But it did. And looking at the deployed system — a citizen filing a crime report from their phone, an officer viewing a district crime forecast, an admin monitoring the system in real time — what strikes me most is not the code, but what it could mean. In Sri Lanka today, that 64% of people who witness a crime and don't report it are essentially invisible to the justice system. They don't shape crime statistics. They don't inform police deployments. They don't access victim support. CRIMSON is a small but concrete step toward changing that. The technology exists, the need is real, and this project demonstrates that it is buildable, affordable, and usable.
+</p>
+<p>
+The next step is getting it into the hands of the people who need it most.
+</p>
+
+<!-- ==================== REFERENCES ==================== -->
+<div class="page-break"></div>
+<h2 style="text-align:center; border:none; font-size:16pt;">References</h2>
+<p class="ref">Chainey, S. and Ratcliffe, J. (2021) <em>GIS and Crime Mapping.</em> 3rd edn. Chichester: John Wiley &amp; Sons.</p>
+<p class="ref">Du, Y. (2023) 'A systematic review of multi-scale spatio-temporal crime prediction', <em>ISPRS International Journal of Geo-Information,</em> 12(6), p. 209.</p>
+<p class="ref">Jenga, K., Catal, C. and Kar, G. (2023) 'Machine learning in crime prediction', <em>Journal of Ambient Intelligence and Humanized Computing.</em> Springer.</p>
+<p class="ref">Kitchin, R. (2023) 'Big data and smart cities: Epistemologies, discourses, and the ethics of urban digital transition', <em>Information, Communication &amp; Society,</em> 26(2), pp. 245–263.</p>
+<p class="ref">Lau, T. (2019) <em>Predictive policing explained.</em> Brennan Center for Justice. [Online]. Available at: https://www.brennancenter.org/ (Accessed: 5 March 2026).</p>
+<p class="ref">Perry, W.L., McInnis, B., Price, C.C., Smith, S.C. and Hollywood, J.S. (2021) <em>Predictive Policing: The Role of Crime Forecasting in Law Enforcement Operations.</em> Santa Monica: RAND Corporation.</p>
+<p class="ref">Seldadyo, H., Sudarto, E.R. and Sonta, A. (2018) 'Predictive policing: Current and future policing', <em>Budapest International Research and Critics Institute (BIRCI) Journal: Humanities and Social Sciences,</em> 1(2), pp. 151–160.</p>
+<p class="ref">Telecommunications Regulatory Commission of Sri Lanka (2023) <em>Annual Performance Report.</em> Colombo: TRCSL. [Online]. Available at: https://www.trc.gov.lk/ (Accessed: 5 March 2026).</p>
+<p class="ref">Waidyalankara, A. (2021) 'A predictive state? Sri Lankan context of predictive policing', <em>Daily FT,</em> 25 January. [Online]. Available at: https://www.ft.lk/ (Accessed: 5 March 2026).</p>
+<p class="ref">bcryptjs (2024) <em>bcryptjs npm package v2.4.3 documentation.</em> [Online]. Available at: https://www.npmjs.com/package/bcryptjs (Accessed: 5 March 2026).</p>
+<p class="ref">JSON Web Tokens (2024) <em>Introduction to JSON Web Tokens.</em> [Online]. Available at: https://jwt.io/introduction (Accessed: 5 March 2026).</p>
+<p class="ref">Mongoose (2024) <em>Mongoose v9 documentation – Middleware.</em> [Online]. Available at: https://mongoosejs.com/docs/middleware.html (Accessed: 5 March 2026).</p>
+<p class="ref">OWASP (2023) <em>OWASP Top 10 – Authentication Cheat Sheet.</em> [Online]. Available at: https://cheatsheetseries.owasp.org/ (Accessed: 5 March 2026).</p>
+
+</body>
+</html>

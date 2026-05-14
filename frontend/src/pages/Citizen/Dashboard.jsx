@@ -1,10 +1,106 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { getCitizenAlerts } from "../../api/alerts";
 import logoImage from "../../assets/Logo.png";
 import CitizenFooter from "../../components/Citizen/CitizenFooter";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import "../../styles/Citizen/Dashboard.css";
+
+const DASHBOARD_DISTRICTS = [
+  { name: "Colombo",      level: 4, crimes: 1245, lat: 6.9271, lng: 79.8612 },
+  { name: "Gampaha",      level: 3, crimes: 782,  lat: 7.1600, lng: 80.0150 },
+  { name: "Kalutara",     level: 2, crimes: 385,  lat: 6.5854, lng: 79.9607 },
+  { name: "Kandy",        level: 3, crimes: 521,  lat: 7.2906, lng: 80.6337 },
+  { name: "Matale",       level: 2, crimes: 298,  lat: 7.4675, lng: 80.6234 },
+  { name: "Nuwara Eliya", level: 1, crimes: 124,  lat: 6.9497, lng: 80.7891 },
+  { name: "Galle",        level: 2, crimes: 365,  lat: 6.0535, lng: 80.2210 },
+  { name: "Matara",       level: 2, crimes: 342,  lat: 5.9496, lng: 80.5353 },
+  { name: "Hambantota",   level: 1, crimes: 187,  lat: 6.1241, lng: 81.1185 },
+  { name: "Jaffna",       level: 2, crimes: 412,  lat: 9.6615, lng: 80.0255 },
+  { name: "Kilinochchi",  level: 1, crimes: 92,   lat: 9.3803, lng: 80.3770 },
+  { name: "Mannar",       level: 1, crimes: 68,   lat: 8.9761, lng: 79.9045 },
+  { name: "Vavuniya",     level: 2, crimes: 156,  lat: 8.7514, lng: 80.4971 },
+  { name: "Mullaitivu",   level: 1, crimes: 103,  lat: 9.2671, lng: 80.8128 },
+  { name: "Batticaloa",   level: 2, crimes: 289,  lat: 7.7102, lng: 81.6924 },
+  { name: "Ampara",       level: 2, crimes: 267,  lat: 7.2912, lng: 81.6724 },
+  { name: "Trincomalee",  level: 2, crimes: 234,  lat: 8.5922, lng: 81.1152 },
+  { name: "Kurunegala",   level: 2, crimes: 445,  lat: 7.4818, lng: 80.3609 },
+  { name: "Puttalam",     level: 1, crimes: 178,  lat: 8.0362, lng: 79.8283 },
+  { name: "Anuradhapura", level: 1, crimes: 312,  lat: 8.3114, lng: 80.4037 },
+  { name: "Polonnaruwa",  level: 1, crimes: 145,  lat: 7.9403, lng: 81.0188 },
+  { name: "Badulla",      level: 2, crimes: 298,  lat: 6.9934, lng: 81.0550 },
+  { name: "Monaragala",   level: 1, crimes: 121,  lat: 6.8728, lng: 81.3507 },
+  { name: "Ratnapura",    level: 2, crimes: 267,  lat: 6.6828, lng: 80.3992 },
+  { name: "Kegalle",      level: 2, crimes: 234,  lat: 7.2513, lng: 80.3464 },
+];
+
+const D_LEVEL_COLORS = { 1: "#22c55e", 2: "#eab308", 3: "#f97316", 4: "#ef4444" };
+const D_LEVEL_LABELS = { 1: "Safe",    2: "Moderate", 3: "High Risk", 4: "Critical" };
+
+function DashboardDistrictMap() {
+  const mapDivRef = useRef(null);
+  const mapRef    = useRef(null);
+
+  useEffect(() => {
+    if (mapRef.current || !mapDivRef.current) return;
+
+    const map = L.map(mapDivRef.current, {
+      center: [7.8731, 80.7718],
+      zoom: 7,
+      zoomControl: false,
+      attributionControl: false,
+      scrollWheelZoom: false,
+      dragging: true,
+      doubleClickZoom: true,
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 13,
+      minZoom: 6,
+    }).addTo(map);
+
+    DASHBOARD_DISTRICTS.forEach((d) => {
+      const radius = Math.min(10 + Math.sqrt(d.crimes) * 0.62, 26);
+      const color  = D_LEVEL_COLORS[d.level];
+
+      L.circleMarker([d.lat, d.lng], {
+        radius,
+        fillColor:   color,
+        color:       "#ffffff",
+        weight:      2.5,
+        fillOpacity: 0.82,
+      })
+      .bindTooltip(
+        `<div style="font-family:sans-serif;min-width:130px">
+          <div style="font-weight:700;font-size:13px;margin-bottom:3px">${d.name}</div>
+          <div style="display:inline-block;background:${color};color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-bottom:4px">${D_LEVEL_LABELS[d.level].toUpperCase()}</div>
+          <div style="font-size:12px;color:#444"><strong>${d.crimes.toLocaleString()}</strong> incidents</div>
+        </div>`,
+        { sticky: false, direction: "top", className: "hm-tooltip-wrap", offset: [0, -4], opacity: 1 }
+      )
+      .addTo(map);
+    });
+
+    mapRef.current = map;
+    return () => { map.remove(); mapRef.current = null; };
+  }, []);
+
+  return (
+    <div className="cd-map-wrap">
+      <div ref={mapDivRef} style={{ width: "100%", height: "100%" }} />
+      <div className="cd-map-legend">
+        {[4, 3, 2, 1].map((lv) => (
+          <div key={lv} className="cd-map-legend-item">
+            <span className="cd-map-legend-dot" style={{ background: D_LEVEL_COLORS[lv] }} />
+            {D_LEVEL_LABELS[lv]}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const FALLBACK_ALERTS = [
   {
@@ -182,26 +278,7 @@ export default function CitizenDashboard() {
                 <h3 className="cd-card-title">District Crime Heatmap</h3>
                 <span className="cd-view-map" onClick={() => navigate("/heatmap")}>View Full Map →</span>
               </div>
-              <div className="cd-map-wrap">
-                <iframe
-                  title="Sri Lanka Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2021065.2!2d79.6!3d7.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593cf65a1e9d%3A0xe13da4b400e2d38c!2sSri%20Lanka!5e0!3m2!1sen!2slk!4v1699999999999!5m2!1sen!2slk"
-                  className="cd-map-iframe"
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-                <div className="cd-map-location-badge">
-                  <span>📍</span>
-                  <div>
-                    <p className="cd-map-loc-label">CURRENT LOCATION</p>
-                    <p className="cd-map-loc-name">Colombo District 01</p>
-                  </div>
-                </div>
-                <div className="cd-map-risk-badge">
-                  <span className="cd-risk-dot"></span> Risk Level: Moderate
-                </div>
-              </div>
+              <DashboardDistrictMap />
             </div>
 
             {/* SAFETY TIPS */}

@@ -104,10 +104,10 @@ const Register = () => {
     <div className="reg-page">
       {/* Navbar */}
       <nav className="reg-nav">
-        <div className="reg-nav__brand">
+        <Link to="/" className="reg-nav__brand" style={{ textDecoration: "none" }}>
           <img src={logoImage} alt="CRIMSON logo" className="reg-nav__logo-icon" />
           <span className="reg-nav__brand-name">CRIMSON</span>
-        </div>
+        </Link>
         <Link to="/login" className="reg-nav__signin-btn">Sign in</Link>
       </nav>
 

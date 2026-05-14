@@ -44,10 +44,10 @@ export default function AdminLogin() {
     <div className="admin-login-page">
       {/* Navbar */}
       <nav className="admin-login-nav">
-        <div className="admin-login-nav__brand">
+        <Link to="/" className="admin-login-nav__brand" style={{ textDecoration: "none" }}>
           <img src={logoImage} alt="CRIMSON logo" className="admin-login-nav__logo-icon" />
           <span className="admin-login-nav__brand-name">CRIMSON</span>
-        </div>
+        </Link>
         <Link to="/login" className="admin-login-nav__signin-btn">Citizen Login</Link>
       </nav>
 

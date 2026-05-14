@@ -47,8 +47,11 @@ body {
 .officer-login-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
   background: var(--bg-white);
+  padding: calc(72px + 32px) 24px 40px;
 }
 
 .officer-login-nav {
@@ -114,8 +117,12 @@ body {
 .crimson-root {
   display: grid;
   grid-template-columns: 55% 45%;
-  margin-top: 72px;
-  min-height: calc(100vh - 72px);
+  width: 100%;
+  max-width: 1080px;
+  min-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.13);
   font-family: var(--font-main);
 }
 

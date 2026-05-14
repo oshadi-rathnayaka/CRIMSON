@@ -105,32 +105,42 @@ body {
 .reg-page {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
   background: var(--bg-page);
+  padding: calc(var(--nav-height) + 32px) 24px 40px;
 }
 
 .reg-main {
   display: flex;
-  flex: 1;
-  margin-top: var(--nav-height);
-  min-height: calc(100vh - var(--nav-height));
+  width: 100%;
+  max-width: 1080px;
+  min-height: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.13);
   align-items: stretch;
 }
 
 /* ---------- Left Panel ---------- */
 .reg-left {
-  flex: 0 0 60%;
-  max-width: 60%;
+  flex: 0 0 58%;
+  max-width: 58%;
   background: var(--bg-white);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 44px 64px 28px 64px;
-  min-height: calc(100vh - var(--nav-height));
+  align-items: center;
+  justify-content: center;
+  padding: 44px 60px 60px 60px;
+  position: relative;
 }
 
 .reg-form-wrapper {
   max-width: 560px;
+  width: 100%;
+  margin-left: auto;
+  padding-right: 60px;
 }
 
 .reg-header {
@@ -496,9 +506,12 @@ body {
 
 /* ---------- Footer ---------- */
 .reg-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
   display: flex;
   gap: 28px;
-  padding-top: 16px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -517,8 +530,8 @@ body {
 
 /* ---------- Right Panel ---------- */
 .reg-right {
-  flex: 0 0 40%;
-  max-width: 40%;
+  flex: 0 0 42%;
+  max-width: 42%;
   position: relative;
   background: var(--panel-dark-bg);
   overflow: hidden;
@@ -527,8 +540,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 60px 40px;
-  min-height: calc(100vh - var(--nav-height));
+  padding: 48px 36px;
 }
 
 .reg-right__bg {
@@ -758,7 +770,7 @@ body {
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 960px) {
+@media (max-width: 860px) {
   .reg-main {
     flex-direction: column;
   }
@@ -775,18 +787,18 @@ body {
   }
 
   .reg-right {
-    min-height: 380px;
+    min-height: 320px;
   }
 }
 
 @media (max-width: 560px) {
+  .reg-page {
+    padding-top: calc(64px + 24px);
+  }
+
   .reg-nav {
     height: 64px;
     padding: 0 20px;
-  }
-
-  .reg-main {
-    margin-top: 64px;
   }
 
   .reg-nav__brand-name {
@@ -859,8 +871,8 @@ body {
 }
 
 .reg-right {
-  flex: 0 0 40% !important;
-  max-width: 40% !important;
+  flex: 0 0 42% !important;
+  max-width: 42% !important;
   min-height: calc(100vh - 72px) !important;
   padding: 60px 40px !important;
   position: relative;
@@ -940,13 +952,13 @@ body {
 }
 
 .reg-left {
-  width: 60% !important;
-  flex: 0 0 60% !important;
-  max-width: 60% !important;
+  width: 58% !important;
+  flex: 0 0 58% !important;
+  max-width: 58% !important;
 }
 
 .reg-right {
-  width: 40% !important;
-  flex: 0 0 40% !important;
-  max-width: 40% !important;
+  width: 42% !important;
+  flex: 0 0 42% !important;
+  max-width: 42% !important;
 }
