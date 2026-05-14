@@ -13,7 +13,6 @@ Supports three roles: Citizens, Police Officers, and Administrators.
 - SOS emergency alerts
 - AI-powered chatbot assistant
 - Support ticket system
-- Multilingual UI (English, Sinhala, Tamil)
 
 ### Police Officers
 - Case management dashboard
