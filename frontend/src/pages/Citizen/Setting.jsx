@@ -62,20 +62,6 @@ export default function Setting() {
           <h2 className="section-heading">Preferences</h2>
           <div className="setting-card">
             <SettingRow
-              label="Language"
-              description="Select your preferred language for the portal."
-            >
-              <SelectField
-                value={preferences.language}
-                onChange={(v) => updatePreferences({ language: v })}
-                options={[
-                  { value: "english", label: "English" },
-                  { value: "french", label: "French" },
-                  { value: "spanish", label: "Spanish" },
-                ]}
-              />
-            </SettingRow>
-            <SettingRow
               label="Theme"
               description="Choose the visual theme for your portal."
             >
