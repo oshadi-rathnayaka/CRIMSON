@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import CitizenNavbar from "../../components/Citizen/CitizenNavbar";
 import CitizenFooter from "../../components/Citizen/CitizenFooter";
 import "../../styles/Citizen/ReportingConfirmation.css";
@@ -23,96 +24,151 @@ const ReportingConfirmation = () => {
     }
   };
 
-  const handleDownloadReceipt = () => {
-    const receiptHTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>CRIMSON Report Receipt – ${caseId}</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f9fafb; color: #0F1419; }
-    .page { max-width: 640px; margin: 40px auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.10); }
-    .header { background: linear-gradient(135deg, #DC143C 0%, #B8102B 100%); padding: 32px 40px; text-align: center; color: #fff; }
-    .header-logo { font-size: 28px; font-weight: 900; letter-spacing: 3px; margin-bottom: 6px; }
-    .header-sub { font-size: 14px; opacity: 0.85; letter-spacing: 0.5px; }
-    .badge { display: inline-block; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 4px 14px; font-size: 12px; margin-top: 10px; }
-    .body { padding: 32px 40px; }
-    .case-id-box { background: #fff5f5; border: 2px solid #DC143C; border-radius: 10px; padding: 18px 24px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; }
-    .case-id-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 4px; }
-    .case-id-value { font-size: 22px; font-weight: 800; color: #DC143C; letter-spacing: 1px; }
-    .status-pill { background: #dcfce7; color: #16a34a; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; }
-    .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6B7280; margin-bottom: 14px; border-bottom: 1px solid #e5e7eb; padding-bottom: 8px; }
-    .field { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #f3f4f6; }
-    .field:last-child { border-bottom: none; }
-    .field-label { font-size: 13px; color: #6B7280; font-weight: 600; }
-    .field-value { font-size: 13px; font-weight: 700; color: #0F1419; text-align: right; max-width: 60%; }
-    .note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px 18px; margin-top: 24px; font-size: 12px; color: #92400e; line-height: 1.6; }
-    .footer { background: #1F2937; color: #9CA3AF; text-align: center; padding: 20px 40px; font-size: 12px; }
-    .footer strong { color: #e5e7eb; }
-    @media print { body { background: #fff; } .page { box-shadow: none; margin: 0; border-radius: 0; } }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <div class="header">
-      <div class="header-logo">🛡️ CRIMSON</div>
-      <div class="header-sub">Crime Reporting &amp; Predictive Policing Platform</div>
-      <div class="badge">✓ Official Submission Receipt</div>
-    </div>
-    <div class="body">
-      <div class="case-id-box">
-        <div>
-          <div class="case-id-label">Case Reference ID</div>
-          <div class="case-id-value">${caseId}</div>
-        </div>
-        <div class="status-pill">✓ Received</div>
-      </div>
+  const handleDownloadReceipt = async () => {
+    try {
+      const pdfDoc = await PDFDocument.create();
+      const page = pdfDoc.addPage([595.28, 841.89]); // A4
+      const { width, height } = page.getSize();
+      const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-      <div class="section-title">Incident Details</div>
-      <div class="field">
-        <span class="field-label">Crime Category</span>
-        <span class="field-value">${catLabel}</span>
-      </div>
-      <div class="field">
-        <span class="field-label">Severity Level</span>
-        <span class="field-value">${severity}</span>
-      </div>
-      <div class="field">
-        <span class="field-label">Date Submitted</span>
-        <span class="field-value">${date}</span>
-      </div>
-      <div class="field">
-        <span class="field-label">Time Submitted</span>
-        <span class="field-value">${time}</span>
-      </div>
-      <div class="field">
-        <span class="field-label">Location</span>
-        <span class="field-value">${address}</span>
-      </div>
+      const margin = 48;
+      let y = height - margin;
 
-      <div class="note">
-        ⚠️ Keep this receipt for your records. Your case reference ID is required to track your report status.
-        This document was generated automatically by the CRIMSON system upon successful submission.
-      </div>
-    </div>
-    <div class="footer">
-      <strong>CRIMSON Platform</strong> — Sri Lanka Crime Reporting System<br/>
-      © 2026 CRIMSON Platform. All rights reserved. | Generated: ${new Date().toLocaleString()}
-    </div>
-  </div>
-</body>
-</html>`;
+      page.drawRectangle({
+        x: 0,
+        y: height - 120,
+        width,
+        height: 120,
+        color: rgb(0.86, 0.08, 0.24),
+      });
 
-    const blob = new Blob([receiptHTML], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `CRIMSON-Receipt-${caseId}.html`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+      page.drawText("CRIMSON", {
+        x: margin,
+        y: height - 72,
+        size: 26,
+        font: fontBold,
+        color: rgb(1, 1, 1),
+      });
+
+      page.drawText("Crime Report Submission Receipt", {
+        x: margin,
+        y: height - 95,
+        size: 12,
+        font,
+        color: rgb(1, 1, 1),
+      });
+
+      y = height - 155;
+
+      page.drawText("Case Reference ID", {
+        x: margin,
+        y,
+        size: 10,
+        font,
+        color: rgb(0.42, 0.45, 0.5),
+      });
+      y -= 24;
+      page.drawText(String(caseId), {
+        x: margin,
+        y,
+        size: 20,
+        font: fontBold,
+        color: rgb(0.86, 0.08, 0.24),
+      });
+
+      y -= 36;
+
+      const drawField = (label, value) => {
+        page.drawText(label, {
+          x: margin,
+          y,
+          size: 11,
+          font,
+          color: rgb(0.42, 0.45, 0.5),
+        });
+        page.drawText(String(value || "-"), {
+          x: margin + 170,
+          y,
+          size: 11,
+          font: fontBold,
+          color: rgb(0.06, 0.08, 0.1),
+        });
+        y -= 24;
+      };
+
+      drawField("Crime Category", catLabel);
+      drawField("Severity Level", severity);
+      drawField("Date Submitted", date);
+      drawField("Time Submitted", time);
+
+      page.drawText("Location", {
+        x: margin,
+        y,
+        size: 11,
+        font,
+        color: rgb(0.42, 0.45, 0.5),
+      });
+      y -= 16;
+
+      const wrappedAddress = String(address || "Location not recorded").match(/.{1,75}(\s|$)/g) || ["Location not recorded"];
+      wrappedAddress.forEach((line) => {
+        page.drawText(line.trim(), {
+          x: margin,
+          y,
+          size: 10,
+          font,
+          color: rgb(0.06, 0.08, 0.1),
+        });
+        y -= 14;
+      });
+
+      y -= 20;
+      page.drawRectangle({
+        x: margin,
+        y: y - 58,
+        width: width - margin * 2,
+        height: 58,
+        color: rgb(1, 0.98, 0.92),
+      });
+
+      page.drawText("Keep this receipt for your records. Use the Case Reference ID", {
+        x: margin + 10,
+        y: y - 22,
+        size: 10,
+        font,
+        color: rgb(0.57, 0.25, 0.05),
+      });
+      page.drawText("to track report status within the CRIMSON platform.", {
+        x: margin + 10,
+        y: y - 36,
+        size: 10,
+        font,
+        color: rgb(0.57, 0.25, 0.05),
+      });
+
+      page.drawText(`Generated: ${new Date().toLocaleString()}`, {
+        x: margin,
+        y: 36,
+        size: 9,
+        font,
+        color: rgb(0.5, 0.53, 0.58),
+      });
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `CRIMSON-Receipt-${caseId}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      // Fallback: open print dialog if PDF generation fails for any reason
+      window.print();
+    }
   };
 
   return (
