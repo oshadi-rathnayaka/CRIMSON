@@ -107,6 +107,20 @@ GEMINI_API_KEY=your_gemini_key
 
 ---
 
+## Demo Login Credentials (For Evaluation Only)
+
+Use the following demo accounts to access role-based dashboards.
+
+### Officer Demo Login
+- Full Name: Officer Silva
+- District: Colombo
+- Email: officer@crimson.gov.lk
+- Password: Officer@1234
+
+### Admin Demo Login
+- Email: admin@crimson.gov.lk
+- Password: Admin@1234
+
 
 
 
